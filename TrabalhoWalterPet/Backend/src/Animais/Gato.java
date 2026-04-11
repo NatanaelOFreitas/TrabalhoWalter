@@ -13,7 +13,7 @@ public class Gato extends Animal{
 
     Gato(String nome, double idade, String raca) {
         super(nome, idade);
-        this.raca = raca;
+        this.raca = raca.toLowerCase();
         this.vacinado = false;
     }
 
@@ -21,7 +21,7 @@ public class Gato extends Animal{
     //getters
 
     public String getRaca() {
-        return raca;
+        return raca.substring(0, 1).toUpperCase() + raca.substring(1).toUpperCase();
     }
 
     public boolean taVacinado() {
@@ -32,7 +32,7 @@ public class Gato extends Animal{
     //setters
 
     public void setRaca(String raca) {
-        this.raca = raca;
+        this.raca = raca.toLowerCase();
     }
 
     public void foiVacinado(boolean vacinado) {
@@ -45,6 +45,6 @@ public class Gato extends Animal{
     @Override
     public void printar() {
         System.out.printf("Nome: %s - Raça: %s - %.2f - Vacinado: %s;",
-                getNome(), getRaca(), getIdade(), portugues(vacinado));
+                getNome(), getRaca(), getIdade(), portugues(taVacinado()));
     }
 }

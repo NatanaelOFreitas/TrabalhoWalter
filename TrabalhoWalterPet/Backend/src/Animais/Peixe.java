@@ -12,21 +12,21 @@ public class Peixe extends Animal{
 
     Peixe(String nome, double idade, String especie) {
         super(nome, idade);
-        this.especie = especie;
+        this.especie = especie.toLowerCase();
     }
 
 
     //getters
 
     public String getEspecie() {
-        return especie;
+        return especie.substring(0, 1).toUpperCase() + especie.substring(1).toUpperCase();
     }
 
 
     //setters
 
     public void setEspecie(String especie) {
-        this.especie = especie;
+        this.especie = especie.toLowerCase();
     }
 
 

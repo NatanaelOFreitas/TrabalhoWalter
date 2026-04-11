@@ -11,7 +11,7 @@ public class Animal {
     //constructor
 
     Animal(String nome, double idade){
-        this.nome = nome;
+        this.nome = nome.toLowerCase();
         this.idade = idade;
     }
 
@@ -19,7 +19,7 @@ public class Animal {
     //getters
 
     public String getNome(){
-        return nome;
+        return nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
     }
 
     public double getIdade(){
@@ -30,7 +30,7 @@ public class Animal {
     //setters
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.toLowerCase();
     }
 
     public void setIdade(double idade) {
@@ -41,7 +41,7 @@ public class Animal {
     //methods
 
     public void printar(){
-        System.out.printf("%s - %.2f;", nome, idade);
+        System.out.printf("%s - %.2f;", getNome(), getIdade());
     }
 
     public String portugues(boolean condicao){
