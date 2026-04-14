@@ -3,6 +3,7 @@ package Dono;
 import Animais.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 public class Dono {
 
@@ -18,7 +19,7 @@ public class Dono {
     //constructor
 
     public Dono(String nome, String email, int numero){
-        this.nome = nome;
+        this.nome = nome.toLowerCase();
         this.email = email;
         this.numero = numero;
         this.listaPets = new ArrayList<>();
@@ -28,7 +29,7 @@ public class Dono {
     //getters
 
     public String getNome() {
-        return nome;
+        return nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
     }
 
     public String getEmail() {
@@ -43,7 +44,7 @@ public class Dono {
     //setters
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.toLowerCase();
     }
 
     public void setEmail(String email) {
@@ -69,6 +70,43 @@ public class Dono {
         for (int i = 0; i < listaPets.size(); i++){
             System.out.printf("\n[%d] - ", i+1);
             listaPets.get(i).printar();
+        }
+    }
+
+    public boolean validPos(int pos){
+        return pos > 0 && pos <= listaPets.size();
+    }
+
+    public void ordenadorLista(){
+        Collections.sort(listaPets, (a, b) ->
+                a.getNome().compareToIgnoreCase(b.getNome()));
+    }
+
+    public int buscarPetPorNome(String nome){
+        ordenadorLista();
+
+        int esquerda = 0;
+        int direita = listaPets.size() - 1;
+
+        while (esquerda <= direita) {
+            int meio = esquerda + (direita - esquerda) / 2;
+            String nomeMeio = listaPets.get(meio).getNome().toLowerCase();
+            int comparacao = nomeMeio.compareTo(nome);
+
+            if (comparacao == 0) {
+                return meio;
+            } else if (comparacao < 0) {
+                esquerda = meio + 1;
+            } else {
+                direita = meio - 1;
+            }
+        }
+        return -1; // não encontrado
+    }
+
+    public void printarPet(int pos){
+        if(validPos(pos)){
+            listaPets.get(pos).printar();
         }
     }
 }
