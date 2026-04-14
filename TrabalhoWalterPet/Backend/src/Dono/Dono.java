@@ -83,6 +83,7 @@ public class Dono {
     }
 
     public int buscarPetPorNome(String nome){
+        final int NIL = -1;
         ordenadorLista();
 
         int esquerda = 0;
@@ -101,7 +102,7 @@ public class Dono {
                 direita = meio - 1;
             }
         }
-        return -1; // não encontrado
+        return NIL;
     }
 
     public void printarPet(int pos){
