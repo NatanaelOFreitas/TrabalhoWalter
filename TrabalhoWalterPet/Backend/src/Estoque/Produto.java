@@ -65,4 +65,11 @@ public class Produto {
     public void setDescricao(String descricao) {
         this.descricao = descricao.toLowerCase();
     }
+
+
+    //methods
+
+    public boolean temSuficiente(int quantd){
+        return (this.quantd - quantd) >= 0;
+    }
 }

@@ -21,6 +21,35 @@ public class Estoque {
     //methods
 
     public void adicionarProd(Produto p){
-        this.estoque.add(p);
+        if(posInEstoque(p) != -1){
+            int total = estoque.get(posInEstoque(p)).getQuantd() + p.getQuantd();
+            estoque.get(posInEstoque(p)).setQuantd(total);
+        }
+        else{
+            estoque.add(p);
+        }
+    }
+
+    public int posInEstoque(Produto p){
+       for(int i = 0; i<estoque.size(); i++){
+           if (p.getNome().equals(estoque.get(i).getNome())){
+               return i;
+           }
+       }
+       return -1;
+    }
+
+    public void comprarProd(Produto p, int quantd){
+        if(posInEstoque(p) != -1){
+            if(estoque.get(posInEstoque(p)).temSuficiente(quantd)){
+                int restante = estoque.get(posInEstoque(p)).getQuantd() - p.getQuantd();
+                if (restante == 0){
+                    estoque.remove(posInEstoque(p));
+                }
+                else{
+                    estoque.get(posInEstoque(p)).setQuantd(restante);
+                }
+            }
+        }
     }
 }
