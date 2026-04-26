@@ -61,7 +61,7 @@ public class Dono {
     public void adicionarPet(Animal pet){
         if (pet != null){
             this.listaPets.add(pet);
-            System.out.printf(pet.getNome() + " adicionado com sucesso a lista!");
+            System.out.println(pet.getNome() + " adicionado com sucesso a lista!");
         }
     }
 
@@ -84,7 +84,9 @@ public class Dono {
 
     public int buscarPetPorNome(String nome){
         final int NIL = -1;
-        ordenadorLista();
+        if(!isSorted()){
+            ordenadorLista();
+        }
 
         int esquerda = 0;
         int direita = listaPets.size() - 1;
@@ -109,5 +111,21 @@ public class Dono {
         if(validPos(pos)){
             listaPets.get(pos).printar();
         }
+    }
+
+    public boolean isSorted(){
+        if (listaPets == null || listaPets.size() <= 1) {
+            return true;
+        }
+
+        for (int i = 0; i < listaPets.size() - 1; i++) {
+            String nomeAtual = listaPets.get(i).getNome().toLowerCase();
+            String nomeProximo = listaPets.get(i + 1).getNome().toLowerCase();
+
+            if (nomeAtual.compareTo(nomeProximo) > 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

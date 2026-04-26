@@ -18,6 +18,18 @@ public class Estoque {
     }
 
 
+    //getters
+
+    public Produto getProduto(int pos){
+        if(validPos(pos)){
+            return estoque.get(pos);
+        }
+        else{
+            return null;
+        }
+    }
+
+
     //methods
 
     public void adicionarProd(Produto p){
@@ -51,5 +63,9 @@ public class Estoque {
                 }
             }
         }
+    }
+
+    public boolean validPos(int pos){
+        return pos < estoque.size() && pos >=0;
     }
 }

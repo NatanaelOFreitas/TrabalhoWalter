@@ -44,6 +44,9 @@ public class Produto {
     }
 
     public String getDescricao() {
+        if (descricao.isBlank()){
+            return "";
+        }
         return descricao.substring(0, 1).toUpperCase() + descricao.substring(1).toLowerCase();
     }
 
