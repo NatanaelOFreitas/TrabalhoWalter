@@ -1,6 +1,8 @@
 package Dono;
 
 import Animais.*;
+import Estoque.Carrinho;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
@@ -10,23 +12,35 @@ public class Dono {
 
     //atributes
 
+    private int id;
     private String nome;
     private String email;
     private int numero;
     private List<Animal> listaPets;
+    private Carrinho carrinho;
+    private String foto;
+    private String senha;
 
 
     //constructor
 
-    public Dono(String nome, String email, int numero){
+    public Dono(int id, String nome, String email, int numero, String senha, String s){
+        this.id = id;
         this.nome = nome.toLowerCase();
         this.email = email;
         this.numero = numero;
         this.listaPets = new ArrayList<>();
+        this.carrinho = new Carrinho();
+        this.foto = "";
+        this.senha = gerarHash256(senha);
     }
 
 
     //getters
+
+    public int getId(){
+        return id;
+    }
 
     public String getNome() {
         return nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
@@ -40,6 +54,14 @@ public class Dono {
         return numero;
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public String getSenha(){
+        return senha;
+    }
+    
 
     //setters
 
@@ -127,5 +149,17 @@ public class Dono {
             }
         }
         return true;
+    }
+
+    public String gerarHash256(String texto) {
+        try {
+            byte[] hashBytes = java.security.MessageDigest
+                    .getInstance("SHA-256")
+                    .digest(texto.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+
+            return java.util.HexFormat.of().formatHex(hashBytes);
+        } catch (java.security.NoSuchAlgorithmException e) {
+            throw new RuntimeException("Erro ao processar o hash: Algoritmo não encontrado", e);
+        }
     }
 }

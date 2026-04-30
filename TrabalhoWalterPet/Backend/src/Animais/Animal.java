@@ -4,13 +4,17 @@ public class Animal {
 
     //atributes
 
+    private int id;
+    private int idDono;
     private String nome;
     private double idade;
 
 
     //constructor
 
-    Animal(String nome, double idade){
+    public Animal(int id, int idDono, String nome, double idade){
+        this.id = id;
+        this.idDono = idDono;
         this.nome = nome.toLowerCase();
         this.idade = idade;
     }
@@ -24,6 +28,14 @@ public class Animal {
 
     public double getIdade(){
         return idade;
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public int getIdDono(){
+        return idDono;
     }
 
 

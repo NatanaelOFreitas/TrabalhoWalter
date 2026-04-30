@@ -10,8 +10,8 @@ public class Peixe extends Animal{
 
     //constructor
 
-    Peixe(String nome, double idade, String especie) {
-        super(nome, idade);
+    public Peixe(int id, int idDono, String nome, double idade, String especie) {
+        super(id, idDono, nome, idade);
         this.especie = especie.toLowerCase();
     }
 

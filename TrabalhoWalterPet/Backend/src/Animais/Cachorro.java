@@ -13,8 +13,8 @@ public class Cachorro extends Animal{
 
     //constructor
 
-    Cachorro(String nome, double idade, String raca) {
-        super(nome, idade);
+    public Cachorro(int id, int idDono, String nome, double idade, String raca) {
+        super(id, idDono, nome, idade);
         this.raca = raca.toLowerCase();
         this.tosado = false;
         this.vacinado = false;

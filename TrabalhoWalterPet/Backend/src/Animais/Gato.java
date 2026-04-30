@@ -11,8 +11,8 @@ public class Gato extends Animal{
 
     //constructor
 
-    Gato(String nome, double idade, String raca) {
-        super(nome, idade);
+    public Gato(int id, int idDono, String nome, double idade, String raca) {
+        super(id, idDono, nome, idade);
         this.raca = raca.toLowerCase();
         this.vacinado = false;
     }
