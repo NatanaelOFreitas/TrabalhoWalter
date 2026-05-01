@@ -13,4 +13,19 @@ public class Utils {
         }
         return pet.getClass().getSimpleName();
     }
+
+    private static final String EMAIL_REGEX =
+            "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+
+    public static boolean isEmailValido(String email) {
+        if (email == null || email.isBlank()) return false;
+        return email.matches(EMAIL_REGEX);
+    }
+
+    public static String validarEmail(String email) throws IllegalArgumentException {
+        if (!isEmailValido(email)) {
+            throw new IllegalArgumentException("Email inválido: " + email);
+        }
+        return email;
+    }
 }
