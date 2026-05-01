@@ -28,4 +28,22 @@ public class Utils {
         }
         return email;
     }
+
+    public static String escaparCSV(String valor) {
+        if (valor == null) return "";
+
+        // Se o valor começa com caractere de risco, prefixar com aspas
+        if (valor.length() > 0 &&
+                "+-=@".indexOf(valor.charAt(0)) >= 0) {
+            valor = "'" + valor;
+        }
+
+        // Se contém vírgula, aspas ou quebra de linha, encapsular
+        if (valor.contains(",") || valor.contains("\"")
+                || valor.contains("\n") || valor.contains("\r")) {
+            valor = "\"" + valor.replace("\"", "\"\"") + "\"";
+        }
+
+        return valor;
+    }
 }
