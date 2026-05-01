@@ -70,10 +70,16 @@ public class Produto {
     }
 
     public void setPrecoUni(float precoUni) {
+        if (precoUni < 0) {
+            throw new IllegalArgumentException("Preço não pode ser negativo");
+        }
         this.precoUni = precoUni;
     }
 
     public void setQuantd(int quantd) {
+        if (quantd < 0) {
+            throw new IllegalArgumentException("Quantidade não pode ser negativa");
+        }
         this.quantd = quantd;
     }
 

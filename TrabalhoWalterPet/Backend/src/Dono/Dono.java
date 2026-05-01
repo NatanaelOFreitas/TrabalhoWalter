@@ -2,10 +2,12 @@ package Dono;
 
 import Animais.*;
 import Estoque.Carrinho;
+import Utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
+import java.util.regex.Pattern;
 
 public class Dono {
 
@@ -20,19 +22,33 @@ public class Dono {
     private Carrinho carrinho;
     private String foto;
     private String senha;
+    private String salt;
 
 
     //constructor
 
-    public Dono(int id, String nome, String email, int numero, String senha, String s){
+    public Dono(int id, String nome, String email, int numero, String senha, String foto) {
         this.id = id;
         this.nome = nome.toLowerCase();
         this.email = email;
         this.numero = numero;
         this.listaPets = new ArrayList<>();
-        this.carrinho = new Carrinho();
-        this.foto = "";
-        this.senha = gerarHash256(senha);
+        this.carrinho = new Carrinho(getId());
+        this.foto = foto.isEmpty() ? "" : foto;
+        this.salt = Utils.gerarSalt();
+        this.senha = Utils.hashComSalt(senha, this.salt);
+    }
+
+    public Dono(int id, String nome, String email, int numero, String senha, String salt, String foto) {
+        this.id = id;
+        this.nome = nome.toLowerCase();
+        this.email = email;
+        this.numero = numero;
+        this.listaPets = new ArrayList<>();
+        this.carrinho = new Carrinho(getId());
+        this.foto = foto.isEmpty() ? "" : foto;
+        this.salt = salt;
+        this.senha = senha;
     }
 
 
@@ -61,22 +77,47 @@ public class Dono {
     public String getSenha(){
         return senha;
     }
-    
+
+    public Carrinho getCarrinho() {
+        return carrinho;
+    }
 
     //setters
 
     public void setNome(String nome) {
-        this.nome = nome.toLowerCase();
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Nome não pode ser vazio");
+        }
+        this.nome = nome.trim().toLowerCase();
     }
 
     public void setEmail(String email) {
+        if (!Utils.isEmailValido(email)) {
+            throw new IllegalArgumentException("Email inválido: " + email);
+        }
         this.email = email;
     }
 
     public void setNumero(int numero) {
+        if (numero <= 0) {
+            throw new IllegalArgumentException("Número deve ser positivo");
+        }
         this.numero = numero;
     }
 
+    public void setSenha(String senhaNova){
+        if (!validarSenha(senhaNova)){
+            throw new IllegalArgumentException("Senha inválida");
+        }
+        this.senha = senhaNova;
+    }
+
+    public void setSalt(String salt){
+        if(salt == null || salt.isBlank()){
+            throw new IllegalArgumentException("Salt inválido");
+        }
+        this.salt = salt;
+    }
 
     //methods
 
@@ -161,5 +202,10 @@ public class Dono {
         } catch (java.security.NoSuchAlgorithmException e) {
             throw new RuntimeException("Erro ao processar o hash: Algoritmo não encontrado", e);
         }
+    }
+
+    public boolean validarSenha(String senha) {
+        String hashDigitado = Utils.hashComSalt(senha, this.salt);
+        return this.senha.equals(hashDigitado);
     }
 }
