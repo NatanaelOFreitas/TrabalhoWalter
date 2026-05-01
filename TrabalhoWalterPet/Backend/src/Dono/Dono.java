@@ -102,6 +102,19 @@ public class Dono {
         this.numero = numero;
     }
 
+    public void setSenha(String senhaNova){
+        if (!validarSenha(senhaNova)){
+            throw new IllegalArgumentException("Senha inválida");
+        }
+        this.senha = senhaNova;
+    }
+
+    public void setSalt(String salt){
+        if(salt == null || salt.isBlank()){
+            throw new IllegalArgumentException("Salt inválido");
+        }
+        this.salt = salt;
+    }
 
     //methods
 
