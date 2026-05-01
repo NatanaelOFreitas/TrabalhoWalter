@@ -187,4 +187,9 @@ public class Dono {
             throw new RuntimeException("Erro ao processar o hash: Algoritmo não encontrado", e);
         }
     }
+
+    public boolean validarSenha(String senha) {
+        String hashDigitado = Utils.hashComSalt(senha, this.salt);
+        return this.senha.equals(hashDigitado);
+    }
 }
