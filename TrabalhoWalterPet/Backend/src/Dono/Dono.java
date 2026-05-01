@@ -27,15 +27,28 @@ public class Dono {
 
     //constructor
 
-    public Dono(int id, String nome, String email, int numero, String senha, String s){
+    public Dono(int id, String nome, String email, int numero, String senha, String foto) {
         this.id = id;
         this.nome = nome.toLowerCase();
         this.email = email;
         this.numero = numero;
         this.listaPets = new ArrayList<>();
         this.carrinho = new Carrinho();
-        this.foto = "";
-        this.senha = gerarHash256(senha);
+        this.foto = foto.isEmpty() ? "" : foto;
+        this.salt = Utils.gerarSalt();
+        this.senha = Utils.hashComSalt(senha, this.salt);
+    }
+
+    public Dono(int id, String nome, String email, int numero, String senha, String salt, String foto) {
+        this.id = id;
+        this.nome = nome.toLowerCase();
+        this.email = email;
+        this.numero = numero;
+        this.listaPets = new ArrayList<>();
+        this.carrinho = new Carrinho();
+        this.foto = foto.isEmpty() ? "" : foto;
+        this.salt = salt;
+        this.senha = senha;
     }
 
 
