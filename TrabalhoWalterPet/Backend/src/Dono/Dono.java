@@ -2,10 +2,12 @@ package Dono;
 
 import Animais.*;
 import Estoque.Carrinho;
+import Utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
+import java.util.regex.Pattern;
 
 public class Dono {
 
@@ -20,6 +22,7 @@ public class Dono {
     private Carrinho carrinho;
     private String foto;
     private String senha;
+    private String salt;
 
 
     //constructor
@@ -66,14 +69,23 @@ public class Dono {
     //setters
 
     public void setNome(String nome) {
-        this.nome = nome.toLowerCase();
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Nome não pode ser vazio");
+        }
+        this.nome = nome.trim().toLowerCase();
     }
 
     public void setEmail(String email) {
+        if (!Utils.isEmailValido(email)) {
+            throw new IllegalArgumentException("Email inválido: " + email);
+        }
         this.email = email;
     }
 
     public void setNumero(int numero) {
+        if (numero <= 0) {
+            throw new IllegalArgumentException("Número deve ser positivo");
+        }
         this.numero = numero;
     }
 
