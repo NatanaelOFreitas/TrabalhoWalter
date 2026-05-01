@@ -42,10 +42,16 @@ public class Animal {
     //setters
 
     public void setNome(String nome) {
-        this.nome = nome.toLowerCase();
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Nome do animal não pode ser vazio");
+        }
+        this.nome = nome.trim().toLowerCase();
     }
 
     public void setIdade(double idade) {
+        if (idade < 0) {
+            throw new IllegalArgumentException("Idade não pode ser negativa");
+        }
         this.idade = idade;
     }
 
