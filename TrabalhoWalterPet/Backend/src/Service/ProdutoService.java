@@ -25,7 +25,7 @@ public class ProdutoService {
         if (precoUnitario <= 0) {
             throw new IllegalArgumentException("Preço deve ser maior que zero");
         }
-        
+
         if (descricao != null && descricao.length() > 500) {
             throw new IllegalArgumentException("Descrição muito longa (máx: 500 caracteres)");
         }

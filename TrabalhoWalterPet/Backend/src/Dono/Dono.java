@@ -33,7 +33,7 @@ public class Dono {
         this.email = email;
         this.numero = numero;
         this.listaPets = new ArrayList<>();
-        this.carrinho = new Carrinho();
+        this.carrinho = new Carrinho(getId());
         this.foto = foto.isEmpty() ? "" : foto;
         this.salt = Utils.gerarSalt();
         this.senha = Utils.hashComSalt(senha, this.salt);
@@ -45,7 +45,7 @@ public class Dono {
         this.email = email;
         this.numero = numero;
         this.listaPets = new ArrayList<>();
-        this.carrinho = new Carrinho();
+        this.carrinho = new Carrinho(getId());
         this.foto = foto.isEmpty() ? "" : foto;
         this.salt = salt;
         this.senha = senha;
@@ -77,7 +77,10 @@ public class Dono {
     public String getSenha(){
         return senha;
     }
-    
+
+    public Carrinho getCarrinho() {
+        return carrinho;
+    }
 
     //setters
 

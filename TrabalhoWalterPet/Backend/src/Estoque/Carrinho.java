@@ -8,13 +8,15 @@ public class Carrinho {
 
     //atributes
 
+    private int id;
     private List<Produto> carrinho;
     private float totalCarrinho;
 
 
     //Constructor
 
-    public Carrinho(){
+    public Carrinho(int id){
+        this.id = id;
         this.totalCarrinho = 0.0f;
         this.carrinho = new ArrayList<>();
     }
@@ -25,7 +27,6 @@ public class Carrinho {
     public void setTotalCarrinho(float novoTotal){
         this.totalCarrinho = novoTotal;
     }
-
 
 
     //getters
@@ -61,6 +62,10 @@ public class Carrinho {
 
     public float getTotal(){
         return totalCarrinho;
+    }
+
+    public int getId(){
+        return id;
     }
 
 
