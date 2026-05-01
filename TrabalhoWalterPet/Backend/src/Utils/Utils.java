@@ -64,4 +64,8 @@ public class Utils {
             throw new RuntimeException("Erro ao gerar hash", e);
         }
     }
+
+    public static String gerarUuid() {
+        return java.util.UUID.randomUUID().toString();
+    }
 }
