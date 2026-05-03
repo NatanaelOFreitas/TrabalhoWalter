@@ -128,7 +128,7 @@ public class Dono {
     }
 
     public void listarPets(){
-        System.out.println("Lista de Pets:");
+        System.out.println("Lista de FrontEnd.Pets:");
         for (int i = 0; i < listaPets.size(); i++){
             System.out.printf("\n[%d] - ", i+1);
             listaPets.get(i).printar();

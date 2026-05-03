@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="263743a1-02a8-4b64-b9a8-c5a7b9663428" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Tema.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -65,7 +75,7 @@
       <workItem from="1777832728302" duration="210000" />
       <workItem from="1777832949213" duration="273000" />
       <workItem from="1777833236255" duration="234000" />
-      <workItem from="1777833483797" duration="2070000" />
+      <workItem from="1777833483797" duration="3675000" />
     </task>
     <servers />
   </component>

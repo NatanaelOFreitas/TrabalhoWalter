@@ -33,7 +33,7 @@
 <!--            <version>1.0.3</version>-->
 <!--        </dependency>-->
 
-        <!-- Componentes extras do FlatLaf -->
+        <!-- FrontEnd.Componentes extras do FlatLaf -->
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf-extras</artifactId>
