@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="263743a1-02a8-4b64-b9a8-c5a7b9663428" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/App.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Tema.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/pom.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="263743a1-02a8-4b64-b9a8-c5a7b9663428" name="Changes" comment="" />
+>>>>>>> f1a00f63a95ef70befe421173adcf45f3c1cc83b
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +54,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "FrontEnd",
     "git.auto.fetch.suggestion.counter": "1",
     "kotlin-language-version-configured": "true",
