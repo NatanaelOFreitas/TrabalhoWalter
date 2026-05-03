@@ -1,4 +1,4 @@
-package Estoque;
+package Backend.Estoque;
 
 public class Produto {
 

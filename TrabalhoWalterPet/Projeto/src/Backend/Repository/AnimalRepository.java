@@ -1,29 +1,27 @@
-package Repository;
+package Backend.Repository;
 
-import Estoque.Produto;
+import Backend.Animais.Animal;
 import com.opencsv.*;
-import Utils.Utils;
+import Backend.Utils.Utils;
 
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
 
-public class ProdutoRepository {
+public class AnimalRepository {
 
-    private static final String FILE = "data/produtos_carrinho.csv";
+    private static final String FILE = "data/animais.csv";
     private static final Object LOCK = new Object();
 
-    public void salvar(Produto p) throws Exception {
+    public void salvar(Animal a) throws Exception {
         synchronized (LOCK) {
             int id = gerarId();
 
             String[] campos = new String[]{
                     String.valueOf(id),
-                    String.valueOf(p.getIdEstoque()),
-                    Utils.escaparCSV(p.getNome()),
-                    String.valueOf(p.getQuantd()),
-                    String.valueOf(p.getPrecoUni()),
-                    Utils.escaparCSV(p.getDescricao())
+                    String.valueOf(a.getIdDono()),
+                    Utils.escaparCSV(a.getNome()),
+                    String.valueOf(a.getIdade())
             };
 
             try (CSVWriter writer = new CSVWriter(new FileWriter(FILE, true))) {
@@ -32,23 +30,21 @@ public class ProdutoRepository {
         }
     }
 
-    public List<Produto> listar() throws Exception {
+    public List<Animal> listar() throws Exception {
         synchronized (LOCK) {
-            List<Produto> lista = new ArrayList<>();
+            List<Animal> lista = new ArrayList<>();
             if (!Files.exists(Path.of(FILE))) return lista;
 
             try (CSVReader reader = new CSVReader(new FileReader(FILE))) {
                 List<String[]> linhas = reader.readAll();
                 for (int i = 1; i < linhas.size(); i++) {
                     String[] c = linhas.get(i);
-                    if (c.length >= 6) {
-                        lista.add(new Produto(
+                    if (c.length >= 4) {
+                        lista.add(new Animal(
                                 Integer.parseInt(c[0]),
                                 Integer.parseInt(c[1]),
                                 c[2],
-                                Integer.parseInt(c[3]),
-                                Float.parseFloat(c[4]),
-                                c[5]
+                                Double.parseDouble(c[3])
                         ));
                     }
                 }
@@ -57,25 +53,25 @@ public class ProdutoRepository {
         }
     }
 
-    public List<Produto> buscarPorCarrinho(int idCarrinho) throws Exception {
-        List<Produto> todos = listar();
-        List<Produto> filtrados = new ArrayList<>();
-        for (Produto p : todos) {
-            if (p.getIdEstoque() == idCarrinho) {
-                filtrados.add(p);
+    public List<Animal> buscarPorDono(int idDono) throws Exception {
+        List<Animal> todos = listar();
+        List<Animal> filtrados = new ArrayList<>();
+        for (Animal a : todos) {
+            if (a.getIdDono() == idDono) {
+                filtrados.add(a);
             }
         }
         return filtrados;
     }
 
-    public Produto buscarPorId(int id) throws Exception {
-        for (Produto p : listar()) {
-            if (p.getId() == id) return p;
+    public Animal buscarPorId(int id) throws Exception {
+        for (Animal a : listar()) {
+            if (a.getId() == id) return a;
         }
         return null;
     }
 
-    public void atualizar(Produto atualizado) throws Exception {
+    public void atualizar(Animal atualizado) throws Exception {
         synchronized (LOCK) {
             List<String[]> linhas;
             try (CSVReader reader = new CSVReader(new FileReader(FILE))) {
@@ -86,11 +82,9 @@ public class ProdutoRepository {
                 if (Integer.parseInt(linhas.get(i)[0]) == atualizado.getId()) {
                     linhas.set(i, new String[]{
                             String.valueOf(atualizado.getId()),
-                            String.valueOf(atualizado.getIdEstoque()),
+                            String.valueOf(atualizado.getIdDono()),
                             Utils.escaparCSV(atualizado.getNome()),
-                            String.valueOf(atualizado.getQuantd()),
-                            String.valueOf(atualizado.getPrecoUni()),
-                            Utils.escaparCSV(atualizado.getDescricao())
+                            String.valueOf(atualizado.getIdade())
                     });
                 }
             }

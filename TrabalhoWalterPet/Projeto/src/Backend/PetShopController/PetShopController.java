@@ -1,11 +1,11 @@
-package PetShopController;
+package Backend.PetShopController;
 
-import Animais.Animal;
+import Backend.Animais.Animal;
 import Dono.Dono;
-import Estoque.Produto;
-import Service.AnimalService;
-import Service.DonoService;
-import Service.ProdutoService;
+import Backend.Estoque.Produto;
+import Backend.Service.AnimalService;
+import Backend.Service.DonoService;
+import Backend.Service.ProdutoService;
 import java.util.List;
 
 public class PetShopController {

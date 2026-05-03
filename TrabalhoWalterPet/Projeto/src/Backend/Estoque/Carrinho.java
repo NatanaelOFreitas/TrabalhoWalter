@@ -1,4 +1,4 @@
-package Estoque;
+package Backend.Estoque;
 
 import java.util.ArrayList;
 import java.util.List;

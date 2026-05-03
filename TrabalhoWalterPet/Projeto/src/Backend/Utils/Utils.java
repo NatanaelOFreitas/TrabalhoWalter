@@ -1,6 +1,6 @@
-package Utils;
+package Backend.Utils;
 
-import Animais.*;
+import Backend.Animais.*;
 
 public class Utils {
 

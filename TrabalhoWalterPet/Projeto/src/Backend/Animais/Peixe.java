@@ -1,4 +1,4 @@
-package Animais;
+package Backend.Animais;
 
 public class Peixe extends Animal{
 

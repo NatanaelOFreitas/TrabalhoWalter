@@ -1,8 +1,8 @@
-package Service;
+package Backend.Service;
 
 import Dono.Dono;
-import Repository.DonoRepository;
-import Utils.Utils;
+import Backend.Repository.DonoRepository;
+import Backend.Utils.Utils;
 import java.util.List;
 
 public class DonoService {

@@ -1,7 +1,7 @@
-package Service;
+package Backend.Service;
 
-import Estoque.Produto;
-import Repository.ProdutoRepository;
+import Backend.Estoque.Produto;
+import Backend.Repository.ProdutoRepository;
 import java.util.List;
 
 public class ProdutoService {

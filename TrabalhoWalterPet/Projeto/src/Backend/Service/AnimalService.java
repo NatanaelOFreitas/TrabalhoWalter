@@ -1,8 +1,8 @@
-package Service;
+package Backend.Service;
 
-import Animais.Animal;
-import Repository.AnimalRepository;
-import Repository.DonoRepository;
+import Backend.Animais.Animal;
+import Backend.Repository.AnimalRepository;
+import Backend.Repository.DonoRepository;
 import java.util.List;
 
 public class AnimalService {

@@ -1,13 +1,12 @@
-package Dono;
+package Backend.Dono;
 
-import Animais.*;
-import Estoque.Carrinho;
-import Utils.*;
+import Backend.Animais.*;
+import Backend.Estoque.Carrinho;
+import Backend.Utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
-import java.util.regex.Pattern;
 
 public class Dono {
 
