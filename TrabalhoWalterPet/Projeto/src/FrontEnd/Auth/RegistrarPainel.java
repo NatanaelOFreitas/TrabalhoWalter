@@ -2,7 +2,8 @@ package FrontEnd.Auth;
 
 import FrontEnd.*;
 import FrontEnd.Componentes.*;
-import PetShopController.PetShopController;
+import Backend.PetShopController.PetShopController;
+import FrontEnd.Componentes.TextField;
 import javax.swing.*;
 import java.awt.*;
 

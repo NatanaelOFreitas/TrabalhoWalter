@@ -3,7 +3,7 @@ package FrontEnd;
 import FrontEnd.Auth.PainelLogin;
 import FrontEnd.Auth.RegistrarPainel;
 import FrontEnd.Dashboard.PainelDashboard;
-import PetShopController.PetShopController;
+import Backend.PetShopController.PetShopController;
 import javax.swing.*;
 import java.awt.*;
 

@@ -2,8 +2,8 @@ package FrontEnd.Carrinho;
 
 import FrontEnd.*;
 import FrontEnd.Componentes.*;
-import PetShopController.PetShopController;
-import Estoque.Produto;
+import Backend.PetShopController.PetShopController;
+import Backend.Estoque.Produto;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;

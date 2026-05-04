@@ -5,8 +5,8 @@ import FrontEnd.Componentes.*;
 import FrontEnd.Pets.*;
 import FrontEnd.Produtos.*;
 import FrontEnd.Carrinho.*;
-import PetShopController.PetShopController;
-import Dono.Dono;
+import Backend.PetShopController.PetShopController;
+import Backend.Dono.Dono;
 import javax.swing.*;
 import java.awt.*;
 

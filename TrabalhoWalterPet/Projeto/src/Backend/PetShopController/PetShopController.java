@@ -1,7 +1,7 @@
 package Backend.PetShopController;
 
 import Backend.Animais.Animal;
-import Dono.Dono;
+import Backend.Dono.Dono;
 import Backend.Estoque.Produto;
 import Backend.Service.AnimalService;
 import Backend.Service.DonoService;

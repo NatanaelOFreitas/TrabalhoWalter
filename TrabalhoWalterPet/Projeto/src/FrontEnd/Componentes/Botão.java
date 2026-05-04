@@ -16,7 +16,7 @@ public class Botão extends JButton{
     }
 
     private void setupButton() {
-        setContentAreaPainted(false);
+        //setContentAreaPainted(false);
         setFocusPainted(false);
         setBorderPainted(false);
         setOpaque(false);

@@ -1,5 +1,7 @@
 package FrontEnd;
 
+import java.awt.*;
+
 public class Tema {
     // Fundos
     public static final Color BG_PRIMARY = new Color(30, 30, 46);       // #1E1E2E

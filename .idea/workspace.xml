@@ -4,16 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="263743a1-02a8-4b64-b9a8-c5a7b9663428" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Tema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/Backend/PetShopController/PetShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/Backend/PetShopController/PetShopController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/Backend/Repository/DonoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/Backend/Repository/DonoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/Backend/Service/DonoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/Backend/Service/DonoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Auth/PainelLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Auth/PainelLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Auth/RegistrarPainel.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Auth/RegistrarPainel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Carrinho/PainelCarrinho.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Carrinho/PainelCarrinho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Componentes/Botão.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Componentes/Botão.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Componentes/TextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Componentes/TextField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Dashboard/PainelDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Dashboard/PainelDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/JanelaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/JanelaPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Pets/CarrinhoPet.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Pets/CarrinhoPet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Pets/DialogoPets.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Pets/DialogoPets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Pets/PainelPets.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Pets/PainelPets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Produtos/DialogoProduto.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Produtos/DialogoProduto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Produtos/ProdutoCarrinho.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Produtos/ProdutoCarrinho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Produtos/ProdutosPainel.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Produtos/ProdutosPainel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Tema.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/FrontEnd/Tema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoWalterPet/Projeto/src/Main.java" afterDir="false" />
     </list>
-=======
-    <list default="true" id="263743a1-02a8-4b64-b9a8-c5a7b9663428" name="Changes" comment="" />
->>>>>>> f1a00f63a95ef70befe421173adcf45f3c1cc83b
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,37 +48,37 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1,
-  &quot;fromUser&quot;: false
-}</component>
+    &quot;associatedIndex&quot;: 1,
+    &quot;fromUser&quot;: false
+    }</component>
   <component name="ProjectId" id="3DDqloUdAjlqX2ubqVrM2wSrBRn" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "FrontEnd",
-    "git.auto.fetch.suggestion.counter": "1",
-    "kotlin-language-version-configured": "true",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/Usuario/IdeaProjects/TrabalhoWalter/src/Main.java",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;FrontEnd&quot;,
+    &quot;git.auto.fetch.suggestion.counter&quot;: &quot;1&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Usuario/IdeaProjects/TrabalhoWalter/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="263743a1-02a8-4b64-b9a8-c5a7b9663428" name="Changes" comment="" />

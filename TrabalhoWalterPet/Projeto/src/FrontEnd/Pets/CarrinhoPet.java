@@ -2,7 +2,7 @@ package FrontEnd.Pets;
 
 import FrontEnd.Tema;
 import FrontEnd.Componentes.*;
-import Animais.Animal;
+import Backend.Animais.Animal;
 import javax.swing.*;
 import java.awt.*;
 

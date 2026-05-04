@@ -2,8 +2,8 @@ package FrontEnd.Pets;
 
 import FrontEnd.*;
 import FrontEnd.Componentes.*;
-import PetShopController.PetShopController;
-import Animais.Animal;
+import Backend.PetShopController.PetShopController;
+import Backend.Animais.Animal;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -78,7 +78,7 @@ public class PainelPets extends JPanel{
     }
 
     private void mostrarDialogAdicionar() {
-        AddPetDialog dialog = new AddPetDialog((JFrame) SwingUtilities.getWindowAncestor(this), JanelaPrincipal);
+        DialogoPets dialog = new DialogoPets((JFrame) SwingUtilities.getWindowAncestor(this), JanelaPrincipal);
         dialog.setVisible(true);
         atualizarDados();
     }

@@ -3,6 +3,7 @@ package FrontEnd.Componentes;
 import FrontEnd.Tema;
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.JPasswordField;
 
 public class TextField extends JPanel{
     private JTextField textField;
@@ -61,7 +62,7 @@ public class TextField extends JPanel{
         textField.setText(text);
     }
 
-    public void setEchoChar(char c) {
-        textField.setEchoChar(c);
-    }
+//    public void setEchoChar(char c) {
+//        textField.set;
+//    }
 }

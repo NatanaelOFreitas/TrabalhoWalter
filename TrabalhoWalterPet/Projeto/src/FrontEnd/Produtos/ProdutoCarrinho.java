@@ -2,7 +2,7 @@ package FrontEnd.Produtos;
 
 import FrontEnd.Tema;
 import FrontEnd.Componentes.*;
-import Estoque.Produto;
+import Backend.Estoque.Produto;
 import javax.swing.*;
 import java.awt.*;
 
