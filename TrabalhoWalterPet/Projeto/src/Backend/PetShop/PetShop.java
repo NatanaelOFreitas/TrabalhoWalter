@@ -107,6 +107,20 @@ public class PetShop {
         carrinho.alterarQuantidade(nome, novaQtd);
     }
 
+    public List<Produto> buscarProdutosParcial(String termo) {
+
+        List<Produto> encontrados = new ArrayList<>();
+
+        for (Produto p : estoque.getEstoque()) {
+
+            if (p.getNome().toLowerCase().contains(termo.toLowerCase())) {
+                encontrados.add(p);
+            }
+        }
+
+        return encontrados;
+    }
+
 
     // métodos de venda
 
