@@ -1,18 +1,15 @@
+// Produto.java
 package Backend.Estoque;
 
 public class Produto {
 
-
-    //atributos
-
+    // atributos
     private String nome;
     private int quantd;
     private float precoUni;
     private String descricao;
 
-
-    //construtor
-
+    // construtores
     public Produto(String nome, float precoUni) {
         this(nome, 1, precoUni, "");
     }
@@ -28,9 +25,7 @@ public class Produto {
         this.descricao = (descricao == null) ? "" : descricao.toLowerCase();
     }
 
-
-    //getters
-
+    // getters
     public String getNome() {
         return nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
     }
@@ -44,15 +39,14 @@ public class Produto {
     }
 
     public String getDescricao() {
-        if (descricao.isBlank()){
+        if (descricao.isBlank()) {
             return "";
         }
+
         return descricao.substring(0, 1).toUpperCase() + descricao.substring(1).toLowerCase();
     }
 
-
-    //setters
-
+    // setters
     public void setNome(String nome) {
         this.nome = nome.toLowerCase();
     }
@@ -61,6 +55,7 @@ public class Produto {
         if (precoUni < 0) {
             throw new IllegalArgumentException("Preço não pode ser negativo");
         }
+
         this.precoUni = precoUni;
     }
 
@@ -68,6 +63,7 @@ public class Produto {
         if (quantd < 0) {
             throw new IllegalArgumentException("Quantidade não pode ser negativa");
         }
+
         this.quantd = quantd;
     }
 
@@ -75,32 +71,32 @@ public class Produto {
         this.descricao = descricao.toLowerCase();
     }
 
-
-    //metodos
-
-    public boolean temSuficiente(int quantd){
+    // métodos
+    public boolean temSuficiente(int quantd) {
         return (this.quantd - quantd) >= 0;
     }
 
-    public void alerta(){
-        if(this.quantd < 5){
-            System.out.println("Pouca quantidade, reabasteça o estoque imediatamente");
-        }
+    public boolean estoqueBaixo() {
+        return this.quantd < 5;
     }
 
-    public void printarProd(){
-        if(getDescricao().isBlank()){
-            System.out.printf(
+    public String infoProduto() {
+
+        if (getDescricao().isBlank()) {
+            return String.format(
                     "Nome: %s - Preço unitário: R$%.2f - Quantidade: %dx",
-                    getNome(), getPrecoUni(), getQuantd()
-                    );
-        }
-        else if (!getDescricao().isBlank()) {
-            System.out.printf(
-                    "Nome: %s - Preço unitário: R$%.2f - Quantidade: %dx - Descrição",
-                    getNome(), getPrecoUni(), getQuantd(), getDescricao()
+                    getNome(),
+                    getPrecoUni(),
+                    getQuantd()
             );
         }
 
+        return String.format(
+                "Nome: %s - Preço unitário: R$%.2f - Quantidade: %dx - Descrição: %s",
+                getNome(),
+                getPrecoUni(),
+                getQuantd(),
+                getDescricao()
+        );
     }
 }
