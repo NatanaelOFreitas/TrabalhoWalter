@@ -130,4 +130,27 @@ public class Carrinho {
 
         throw new IllegalArgumentException("Produto não encontrado no carrinho");
     }
+
+    public void alterarQuantidade(String nome, int novaQtd) {
+
+        if (novaQtd <= 0) {
+            throw new IllegalArgumentException("Quantidade inválida");
+        }
+
+        for (Produto p : carrinho) {
+
+            if (p.getNome().equalsIgnoreCase(nome)) {
+
+                totalCarrinho -= p.getQuantd() * p.getPrecoUni();
+
+                p.setQuantd(novaQtd);
+                
+                totalCarrinho += p.getQuantd() * p.getPrecoUni();
+
+                return;
+            }
+        }
+
+        throw new IllegalArgumentException("Produto não encontrado no carrinho");
+    }
 }
