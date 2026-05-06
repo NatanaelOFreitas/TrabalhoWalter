@@ -1,13 +1,14 @@
-// Produto.java
 package Backend.Estoque;
 
 public class Produto {
+
 
     // atributos
     private String nome;
     private int quantd;
     private float precoUni;
     private String descricao;
+
 
     // construtores
     public Produto(String nome, float precoUni) {
@@ -24,6 +25,7 @@ public class Produto {
         this.precoUni = precoUni;
         this.descricao = (descricao == null) ? "" : descricao.toLowerCase();
     }
+
 
     // getters
     public String getNome() {
@@ -45,6 +47,7 @@ public class Produto {
 
         return descricao.substring(0, 1).toUpperCase() + descricao.substring(1).toLowerCase();
     }
+
 
     // setters
     public void setNome(String nome) {
@@ -71,6 +74,7 @@ public class Produto {
         this.descricao = descricao.toLowerCase();
     }
 
+    
     // métodos
     public boolean temSuficiente(int quantd) {
         return (this.quantd - quantd) >= 0;

@@ -1,4 +1,3 @@
-// Estoque.java
 package Backend.Estoque;
 
 import java.util.ArrayList;
@@ -6,13 +5,16 @@ import java.util.List;
 
 public class Estoque {
 
+
     // atributos
     private List<Produto> estoque;
+
 
     // construtor
     public Estoque() {
         this.estoque = new ArrayList<>();
     }
+
 
     // getters
     public Produto getProduto(int pos) {
@@ -31,7 +33,8 @@ public class Estoque {
         return estoque.size();
     }
 
-    // métodos
+
+    // methods
     public void adicionarProd(Produto p) {
 
         int pos = posInEstoque(p);
