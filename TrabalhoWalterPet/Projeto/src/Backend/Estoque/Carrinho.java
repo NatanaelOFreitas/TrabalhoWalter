@@ -144,7 +144,7 @@ public class Carrinho {
                 totalCarrinho -= p.getQuantd() * p.getPrecoUni();
 
                 p.setQuantd(novaQtd);
-                
+
                 totalCarrinho += p.getQuantd() * p.getPrecoUni();
 
                 return;

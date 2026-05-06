@@ -88,6 +88,25 @@ public class PetShop {
         return carrinho.getTotal();
     }
 
+    public void removerDoCarrinho(String nome) {
+        carrinho.removerProduto(nome);
+    }
+
+    public void alterarQuantidadeCarrinho(String nome, int novaQtd) {
+
+        Produto estoqueProd = buscarProduto(nome);
+
+        if (estoqueProd == null) {
+            throw new IllegalArgumentException("Produto não encontrado");
+        }
+
+        if (!estoqueProd.temSuficiente(novaQtd)) {
+            throw new IllegalArgumentException("Estoque insuficiente");
+        }
+
+        carrinho.alterarQuantidade(nome, novaQtd);
+    }
+
 
     // métodos de venda
 
