@@ -6,12 +6,12 @@ import java.util.List;
 public class Estoque {
 
 
-    //atributes
+    //atributos
 
     private List<Produto> estoque;
 
 
-    //constructor
+    //construtor
 
     public Estoque(){
         this.estoque = new ArrayList<>();
@@ -30,7 +30,7 @@ public class Estoque {
     }
 
 
-    //methods
+    //metodos
 
     public void adicionarProd(Produto p){
         if(posInEstoque(p) != -1){
@@ -61,11 +61,20 @@ public class Estoque {
                 else{
                     estoque.get(posInEstoque(p)).setQuantd(restante);
                 }
+                p.alerta();
             }
         }
     }
 
     public boolean validPos(int pos){
         return pos < estoque.size() && pos >=0;
+    }
+
+    public void listarProdNoEstoque(){
+        System.out.print("\n----- Estoque -----");
+        for (int i = 0; i < estoque.size(); i++){
+            System.out.printf("\n[%d] - ", i+1);
+            estoque.get(i).printarProd();
+        }
     }
 }

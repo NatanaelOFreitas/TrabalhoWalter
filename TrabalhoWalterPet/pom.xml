@@ -14,10 +14,18 @@
     </properties>
 
     <dependencies>
+        <!-- FlatLaf - Tema moderno Dark -->
         <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>5.9</version>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.2</version>
+        </dependency>
+
+        <!-- FrontEnd.Frontend.Componentes extras do FlatLaf -->
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf-extras</artifactId>
+            <version>3.2</version>
         </dependency>
     </dependencies>
 </project>

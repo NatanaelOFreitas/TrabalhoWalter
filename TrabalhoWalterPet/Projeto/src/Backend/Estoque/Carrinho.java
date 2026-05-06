@@ -6,17 +6,15 @@ import java.util.List;
 public class Carrinho {
 
 
-    //atributes
+    //atributos
 
-    private int id;
     private List<Produto> carrinho;
     private float totalCarrinho;
 
 
-    //Constructor
+    //construtor
 
-    public Carrinho(int id){
-        this.id = id;
+    public Carrinho(){
         this.totalCarrinho = 0.0f;
         this.carrinho = new ArrayList<>();
     }
@@ -64,12 +62,8 @@ public class Carrinho {
         return totalCarrinho;
     }
 
-    public int getId(){
-        return id;
-    }
 
-
-    //methods
+    //metodos
 
     public void adicionarProd(Produto p){
         if(posInCarrinho(p) != -1){
