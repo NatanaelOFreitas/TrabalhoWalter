@@ -4,13 +4,14 @@ import FrontEnd.*;
 import FrontEnd.Componentes.*;
 import Backend.PetShopController.PetShopController;
 import FrontEnd.Componentes.TextField;
+import FrontEnd.Componentes.senhaField;
 import javax.swing.*;
 import java.awt.*;
 
 public class PainelLogin extends JPanel{
     private JanelaPrincipal JanelaPrincipal;
     private TextField emailField;
-    private TextField senhaField;
+    private senhaField senhaField;
     private Botão loginButton;
     private JLabel criarContaLabel;
 
@@ -68,7 +69,7 @@ public class PainelLogin extends JPanel{
         gbc.anchor = GridBagConstraints.EAST;
         add(new JLabel("Senha: "), gbc);
 
-        senhaField = new TextField("********");
+        senhaField = new senhaField("Mínimo 4 caracteres");
         senhaField.setEchoChar('*');
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.WEST;

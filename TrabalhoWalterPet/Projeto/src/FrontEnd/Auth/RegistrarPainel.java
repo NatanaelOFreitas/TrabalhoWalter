@@ -4,6 +4,7 @@ import FrontEnd.*;
 import FrontEnd.Componentes.*;
 import Backend.PetShopController.PetShopController;
 import FrontEnd.Componentes.TextField;
+import FrontEnd.Componentes.senhaField;
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,8 +14,8 @@ public class RegistrarPainel extends JPanel{
     private TextField nomeField;
     private TextField emailField;
     private TextField telefoneField;
-    private TextField senhaField;
-    private TextField confirmarSenhaField;
+    private senhaField senhaField;
+    private senhaField confirmarSenhaField;
     private Botão cadastrarButton;
     private JLabel loginLabel;
 
@@ -79,7 +80,7 @@ public class RegistrarPainel extends JPanel{
         gbc.gridy = 4;
         gbc.anchor = GridBagConstraints.EAST;
         add(new JLabel("Senha: "), gbc);
-        senhaField = new TextField("Mínimo 4 caracteres");
+        senhaField = new senhaField("Mínimo 4 caracteres");
         senhaField.setEchoChar('*');
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.WEST;
@@ -90,7 +91,7 @@ public class RegistrarPainel extends JPanel{
         gbc.gridy = 5;
         gbc.anchor = GridBagConstraints.EAST;
         add(new JLabel("Confirmar: "), gbc);
-        confirmarSenhaField = new TextField("Digite a senha novamente");
+        confirmarSenhaField = new senhaField("Digite a senha novamente");
         confirmarSenhaField.setEchoChar('*');
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.WEST;

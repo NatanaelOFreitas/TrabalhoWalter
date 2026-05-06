@@ -61,6 +61,7 @@ public class Estoque {
                 else{
                     estoque.get(posInEstoque(p)).setQuantd(restante);
                 }
+                p.alerta();
             }
         }
     }

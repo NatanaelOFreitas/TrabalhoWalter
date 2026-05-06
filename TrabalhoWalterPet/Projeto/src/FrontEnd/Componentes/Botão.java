@@ -47,7 +47,7 @@ public class Botão extends JButton{
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, true);
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,  RenderingHints.VALUE_ANTIALIAS_ON);
 
         // Fundo com bordas arredondadas
         g2.setColor(currentColor);
