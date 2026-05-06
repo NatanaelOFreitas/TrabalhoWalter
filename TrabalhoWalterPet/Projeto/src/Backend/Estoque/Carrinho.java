@@ -109,4 +109,25 @@ public class Carrinho {
         this.totalCarrinho = 0.0f;
         carrinho.clear();
     }
+
+    public void removerProduto(String nome) {
+
+        for (int i = 0; i < carrinho.size(); i++) {
+
+            Produto p = carrinho.get(i);
+
+            if (p.getNome().equalsIgnoreCase(nome)) {
+
+                float remover = p.getQuantd() * p.getPrecoUni();
+
+                totalCarrinho -= remover;
+
+                carrinho.remove(i);
+
+                return;
+            }
+        }
+
+        throw new IllegalArgumentException("Produto não encontrado no carrinho");
+    }
 }
