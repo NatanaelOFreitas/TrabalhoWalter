@@ -9,14 +9,12 @@ public class Estoque {
     //atributes
 
     private List<Produto> estoque;
-    private List<Produto> prodsVendidos;
 
 
     //constructor
 
     public Estoque(){
         this.estoque = new ArrayList<>();
-        this.prodsVendidos = new ArrayList<>();
     }
 
 
@@ -64,8 +62,6 @@ public class Estoque {
                     estoque.get(posInEstoque(p)).setQuantd(restante);
                 }
                 p.alerta();
-
-                //adicionar a lista de prod vendidos
             }
         }
     }
@@ -79,25 +75,6 @@ public class Estoque {
         for (int i = 0; i < estoque.size(); i++){
             System.out.printf("\n[%d] - ", i+1);
             estoque.get(i).printarProd();
-        }
-    }
-
-    public int posInVendas(Produto p){
-        for(int i = 0; i<prodsVendidos.size(); i++){
-            if (p.getNome().equals(prodsVendidos.get(i).getNome())){
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    public void adicionarVendas(Produto p, int q){
-        if(posInVendas(p) != -1){
-            int total = prodsVendidos.get(posInVendas(p)).getQuantd() + p.getQuantd();
-            prodsVendidos.get(posInVendas(p)).setQuantd(total);
-        }
-        else{
-            prodsVendidos.add(p);
         }
     }
 }
