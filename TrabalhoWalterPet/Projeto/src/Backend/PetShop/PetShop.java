@@ -121,8 +121,7 @@ public class PetShop {
 
         Venda venda = new Venda(
                 contadorVendas++,
-                produtosVenda,
-                formaPagamento
+                produtosVenda
         );
 
         vendas.add(venda);

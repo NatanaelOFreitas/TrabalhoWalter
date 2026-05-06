@@ -16,16 +16,14 @@ public class Venda {
     private LocalDateTime dataHora;
     private List<Produto> produtos;
     private float total;
-    private String formaPagamento;
 
 
     //construtor
 
-    public Venda(int id, List<Produto> produtos, String formaPagamento) {
+    public Venda(int id, List<Produto> produtos) {
         this.id = id;
         this.dataHora = LocalDateTime.now();
         this.produtos = new ArrayList<>(produtos);
-        this.formaPagamento = formaPagamento;
         this.total = calcularTotal();
     }
 
@@ -78,7 +76,6 @@ public class Venda {
         }
 
         sb.append(String.format("Total: R$%.2f\n", total));
-        sb.append("Pagamento: ").append(formaPagamento).append("\n");
 
         return sb.toString();
     }
