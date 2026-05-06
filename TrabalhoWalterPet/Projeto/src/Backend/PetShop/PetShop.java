@@ -90,7 +90,7 @@ public class PetShop {
 
 
     // métodos de venda
-    
+
     public String finalizarVenda(String formaPagamento) {
 
         if (carrinho.getCarrinho().isEmpty()) {

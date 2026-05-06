@@ -1,20 +1,30 @@
 package Backend.Relatorios;
 
-import Backend.Vendas.Venda;
 import Backend.Estoque.Produto;
+import Backend.Vendas.Venda;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Relatorio {
 
+
+    //atributos
+
     private List<Venda> vendas;
+
+
+    //construtor
 
     public Relatorio(List<Venda> vendas) {
         this.vendas = vendas;
     }
 
+
+    //métodos
+
     public float totalFaturamento() {
+
         float total = 0;
 
         for (Venda v : vendas) {
@@ -24,7 +34,16 @@ public class Relatorio {
         return total;
     }
 
-    public void produtosMaisVendidos() {
+    public float mediaPorVenda() {
+
+        if (vendas.isEmpty()) {
+            return 0;
+        }
+
+        return totalFaturamento() / vendas.size();
+    }
+
+    public List<String> produtosMaisVendidos() {
 
         List<String> nomes = new ArrayList<>();
         List<Integer> quantidades = new ArrayList<>();
@@ -33,31 +52,61 @@ public class Relatorio {
 
             for (Produto p : v.getProdutos()) {
 
-                String nome = p.getNome();
-
-                int index = nomes.indexOf(nome);
+                int index = nomes.indexOf(p.getNome());
 
                 if (index == -1) {
-                    nomes.add(nome);
+
+                    nomes.add(p.getNome());
                     quantidades.add(1);
-                } else {
-                    quantidades.set(index, quantidades.get(index) + 1);
+                }
+                else {
+
+                    quantidades.set(
+                            index,
+                            quantidades.get(index) + 1
+                    );
                 }
             }
         }
 
-        System.out.println("\nProdutos mais vendidos:");
+        List<String> ranking = new ArrayList<>();
 
         for (int i = 0; i < nomes.size(); i++) {
-            System.out.println(nomes.get(i) + ": " + quantidades.get(i));
+
+            ranking.add(
+                    nomes.get(i) + ": " + quantidades.get(i)
+            );
         }
+
+        return ranking;
     }
 
-    public void exibirRelatorio() {
-        System.out.println("\n===== RELATÓRIO =====");
+    public String exibirRelatorio() {
 
-        System.out.printf("Total faturado: R$%.2f\n", totalFaturamento());
+        StringBuilder sb = new StringBuilder();
 
-        produtosMaisVendidos();
+        sb.append("===== RELATÓRIO =====\n");
+
+        sb.append(
+                String.format(
+                        "Total faturado: R$%.2f\n",
+                        totalFaturamento()
+                )
+        );
+
+        sb.append(
+                String.format(
+                        "Média por venda: R$%.2f\n",
+                        mediaPorVenda()
+                )
+        );
+
+        sb.append("\nProdutos mais vendidos:\n");
+
+        for (String s : produtosMaisVendidos()) {
+            sb.append(s).append("\n");
+        }
+
+        return sb.toString();
     }
 }
