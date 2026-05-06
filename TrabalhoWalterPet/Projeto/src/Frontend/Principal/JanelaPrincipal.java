@@ -35,17 +35,22 @@ public class JanelaPrincipal extends JFrame {
         btnEntrar = new JButton("Entrar");
         add(btnEntrar,BorderLayout.SOUTH);
 
-//        btnEntrar.addActionListener(new ActionListener() {
-//            String Senha = "1234";
-//            String SenhaDigitada = AreaSenha.getText();
-//
-//            if (SenhaDigitada == Senha){
-//                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            }
-//            else {
-//                add(painelSenhaIncorreta, BorderLayout.PAGE_END);
-//            }
-//        });
+        btnEntrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                String Senha = "1234";
+                String SenhaDigitada = AreaSenha.getText();
+
+                if (SenhaDigitada.equals(Senha)){
+                    System.exit(0);                         //Validar se esse é o comando certo pra trocar de tela
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Senha Incorreta!");
+                }
+            }
+
+
+        });
     }
 }
 
