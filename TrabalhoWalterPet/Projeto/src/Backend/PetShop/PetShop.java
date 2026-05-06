@@ -8,12 +8,19 @@ import java.util.List;
 
 public class PetShop {
 
+
+    //atributos
+
     private Estoque estoque;
     private Carrinho carrinho;
     private List<Venda> vendas;
     private int contadorVendas;
 
+
+    //construtor
+
     public PetShop() {
+
         this.estoque = new Estoque();
         this.carrinho = new Carrinho();
         this.vendas = new ArrayList<>();
@@ -22,43 +29,47 @@ public class PetShop {
         cargaInicial();
     }
 
-    // ================= ESTOQUE =================
+
+    // métodos de estoque
 
     public void adicionarProduto(String nome, float preco, int qtd, String desc) {
+
         Produto p = new Produto(nome, qtd, preco, desc);
+
         estoque.adicionarProd(p);
     }
 
     public Produto buscarProduto(String nome) {
-        for (int i = 0; i < 1000; i++) {
-            Produto p = estoque.getProduto(i);
-            if (p == null) break;
+
+        for (Produto p : estoque.getEstoque()) {
 
             if (p.getNome().equalsIgnoreCase(nome)) {
                 return p;
             }
         }
+
         return null;
     }
 
-    public void listarProdutos() {
-        estoque.listarProdNoEstoque();
+    public List<String> listarProdutos() {
+        return estoque.listarProdNoEstoque();
     }
 
-    // ================= CARRINHO =================
+
+    // métodos do carrinho
 
     public void adicionarAoCarrinho(String nome, int qtd) {
+
         Produto estoqueProd = buscarProduto(nome);
 
         if (estoqueProd == null) {
-            throw new RuntimeException("Produto não encontrado");
+            throw new IllegalArgumentException("Produto não encontrado");
         }
 
         if (!estoqueProd.temSuficiente(qtd)) {
-            throw new RuntimeException("Estoque insuficiente");
+            throw new IllegalArgumentException("Estoque insuficiente");
         }
 
-        // cria um NOVO produto para o carrinho (importante!)
         Produto carrinhoProd = new Produto(
                 estoqueProd.getNome(),
                 qtd,
@@ -67,53 +78,60 @@ public class PetShop {
         );
 
         carrinho.adicionarProd(carrinhoProd);
-        carrinho.adicionarTotal(carrinhoProd);
     }
 
-    public void verCarrinho() {
-        carrinho.listarCarrinho();
+    public List<String> verCarrinho() {
+        return carrinho.listarCarrinho();
     }
 
-    // ================= VENDA =================
+    public float totalCarrinho() {
+        return carrinho.getTotal();
+    }
 
-    public void finalizarVenda(String formaPagamento) {
 
-        if (carrinho.getTotal() == 0) {
-            throw new RuntimeException("Carrinho vazio");
+    // métodos de venda
+    
+    public String finalizarVenda(String formaPagamento) {
+
+        if (carrinho.getCarrinho().isEmpty()) {
+            throw new IllegalArgumentException("Carrinho vazio");
         }
 
         List<Produto> produtosVenda = new ArrayList<>();
 
-        // percorre carrinho
-        for (int i = 0; i < 1000; i++) {
-
-            Produto p = carrinho.getProduto(i);
-            if (p == null) break;
+        for (Produto p : carrinho.getCarrinho()) {
 
             Produto estoqueProd = buscarProduto(p.getNome());
 
-            if (estoqueProd == null) continue;
+            if (estoqueProd != null) {
 
-            // baixa estoque
-            estoque.comprarProd(estoqueProd, p.getQuantd());
+                estoque.comprarProd(estoqueProd, p.getQuantd());
 
-            // transforma quantidade em itens individuais
-            for (int j = 0; j < p.getQuantd(); j++) {
-                produtosVenda.add(new Produto(
-                        p.getNome(),
-                        1,
-                        p.getPrecoUni(),
-                        p.getDescricao()
-                ));
+                for (int i = 0; i < p.getQuantd(); i++) {
+
+                    produtosVenda.add(new Produto(
+                            p.getNome(),
+                            1,
+                            p.getPrecoUni(),
+                            p.getDescricao()
+                    ));
+                }
             }
         }
 
-        Venda venda = new Venda(contadorVendas++, produtosVenda, formaPagamento);
+        Venda venda = new Venda(
+                contadorVendas++,
+                produtosVenda,
+                formaPagamento
+        );
+
         vendas.add(venda);
 
-        venda.exibirComprovante();
+        String comprovante = venda.gerarComprovante();
 
         carrinho.pagar();
+
+        return comprovante;
     }
 
     public void cancelarVenda(int id) {
@@ -121,27 +139,32 @@ public class PetShop {
         Venda venda = buscarVenda(id);
 
         if (venda == null) {
-            throw new RuntimeException("Venda não encontrada");
+            throw new IllegalArgumentException("Venda não encontrada");
         }
 
-        // devolve estoque
         for (Produto p : venda.getProdutos()) {
+
             Produto estoqueProd = buscarProduto(p.getNome());
 
             if (estoqueProd != null) {
-                estoqueProd.setQuantd(estoqueProd.getQuantd() + 1);
+                estoqueProd.setQuantd(
+                        estoqueProd.getQuantd() + 1
+                );
             }
         }
 
         vendas.remove(venda);
-
-        System.out.println("Venda cancelada.");
     }
 
     public Venda buscarVenda(int id) {
+
         for (Venda v : vendas) {
-            if (v.getId() == id) return v;
+
+            if (v.getId() == id) {
+                return v;
+            }
         }
+
         return null;
     }
 
@@ -150,6 +173,7 @@ public class PetShop {
     }
 
     private void cargaInicial() {
+
         adicionarProduto("ração", 50f, 10, "premium");
         adicionarProduto("brinquedo", 20f, 15, "cachorro");
         adicionarProduto("coleira", 30f, 8, "ajustável");
