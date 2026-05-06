@@ -16,23 +16,36 @@ public class JanelaPrincipal extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
-        JPanel painel = new JPanel();
-        painel.setLayout(new GridLayout(0, 1, 5, 5));
+        JPanel painelSenha = new JPanel();
+        painelSenha.setLayout(new GridLayout(0, 1, 5, 5));
 
-        painel.add(new JLabel("Senha: "));
-        
+        JTextArea AreaSenha = new JTextArea(1, 12);
 
-        add(painel, BorderLayout.NORTH);
+
+        JPanel painelSenhaIncorreta = new JPanel();
+        painelSenhaIncorreta.setLayout(new GridLayout(0,1,5,5));
+
+        painelSenha.add(new JLabel("Senha: "));
+        painelSenhaIncorreta.add(new JLabel("Senha Incorreta!"));
+
+
+        add(AreaSenha, BorderLayout.CENTER);
+        add(painelSenha, BorderLayout.PAGE_START);
 
         btnEntrar = new JButton("Entrar");
         add(btnEntrar,BorderLayout.SOUTH);
 
-        btnEntrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
+//        btnEntrar.addActionListener(new ActionListener() {
+//            String Senha = "1234";
+//            String SenhaDigitada = AreaSenha.getText();
+//
+//            if (SenhaDigitada == Senha){
+//                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            }
+//            else {
+//                add(painelSenhaIncorreta, BorderLayout.PAGE_END);
+//            }
+//        });
     }
 }
 
