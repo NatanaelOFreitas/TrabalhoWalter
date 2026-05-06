@@ -6,95 +6,101 @@ import java.util.List;
 public class Carrinho {
 
 
-    //atributos
-
+    // atributos
     private List<Produto> carrinho;
     private float totalCarrinho;
 
 
-    //construtor
-
-    public Carrinho(){
+    // construtor
+    public Carrinho() {
         this.totalCarrinho = 0.0f;
         this.carrinho = new ArrayList<>();
     }
 
 
-    //setters
-
-    public void setTotalCarrinho(float novoTotal){
+    // setters
+    public void setTotalCarrinho(float novoTotal) {
         this.totalCarrinho = novoTotal;
     }
 
 
-    //getters
+    // getters
+    public Produto getProduto(int pos) {
 
-    public Produto getProduto(int pos){
-        if(validPos(pos)){
+        if (validPos(pos)) {
             return carrinho.get(pos);
         }
-        else{
-            return null;
-        }
+
+        return null;
     }
 
-    public void listarCarrinho(){
-        for (int i = 0; i < carrinho.size(); i++){
-            if (getProduto(i).getDescricao().isBlank()){
-                System.out.printf("[%d] - %s - %.2f - %d uni(s);",
-                        i+1,
-                        getProduto(i).getNome(),
-                        getProduto(i).getPrecoUni(),
-                        getProduto(i).getQuantd());
-            }
-            else{
-                System.out.printf("[%d] - %s - %.2f - %d uni(s) - %s;",
-                        i+1,
-                        getProduto(i).getNome(),
-                        getProduto(i).getPrecoUni(),
-                        getProduto(i).getQuantd(),
-                        getProduto(i).getDescricao());
-            }
-        }
+    public List<Produto> getCarrinho() {
+        return carrinho;
     }
 
-    public float getTotal(){
+    public float getTotal() {
         return totalCarrinho;
     }
 
+    public int tamanho() {
+        return carrinho.size();
+    }
 
-    //metodos
+    
+    // métodos
+    public List<String> listarCarrinho() {
 
-    public void adicionarProd(Produto p){
-        if(posInCarrinho(p) != -1){
-            int total = carrinho.get(posInCarrinho(p)).getQuantd() + p.getQuantd();
-            adicionarTotal(p);
-            carrinho.get(posInCarrinho(p)).setQuantd(total);
+        List<String> lista = new ArrayList<>();
+
+        for (Produto p : carrinho) {
+            lista.add(p.infoProduto());
         }
-        else{
+
+        return lista;
+    }
+
+    public void adicionarProd(Produto p) {
+
+        int pos = posInCarrinho(p);
+
+        if (pos != -1) {
+
+            int total = carrinho.get(pos).getQuantd() + p.getQuantd();
+
+            adicionarTotal(p);
+
+            carrinho.get(pos).setQuantd(total);
+        }
+        else {
             carrinho.add(p);
+            adicionarTotal(p);
         }
     }
 
-    public int posInCarrinho(Produto p){
-        for(int i = 0; i<carrinho.size(); i++){
-            if (p.getNome().equals(carrinho.get(i).getNome())){
+    public int posInCarrinho(Produto p) {
+
+        for (int i = 0; i < carrinho.size(); i++) {
+
+            if (p.getNome().equalsIgnoreCase(carrinho.get(i).getNome())) {
                 return i;
             }
         }
+
         return -1;
     }
 
-    public void adicionarTotal(Produto p){
+    public void adicionarTotal(Produto p) {
+
         float adicionar = p.getQuantd() * p.getPrecoUni();
+
         setTotalCarrinho(getTotal() + adicionar);
     }
 
-    public boolean validPos(int pos){
-        return pos < carrinho.size() && pos >=0;
+    public boolean validPos(int pos) {
+        return pos < carrinho.size() && pos >= 0;
     }
 
-    public void pagar(){
+    public void pagar() {
         this.totalCarrinho = 0.0f;
         carrinho.clear();
     }
