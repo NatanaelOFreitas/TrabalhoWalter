@@ -1,18 +1,18 @@
 package Backend.Utils;
 
-import Backend.Animais.*;
+//import Backend.Animais.*;
 
 public class Utils {
 
 
     //Verifica qual tipo de animal e retorna uma String com o nome da classe específica
 
-    public String checkadorTipoPet(Animal pet){
-        if (pet == null){
-            return "nulo";
-        }
-        return pet.getClass().getSimpleName();
-    }
+//    public String checkadorTipoPet(Animal pet){
+//        if (pet == null){
+//            return "nulo";
+//        }
+//        return pet.getClass().getSimpleName();
+//    }
 
     private static final String EMAIL_REGEX =
             "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";

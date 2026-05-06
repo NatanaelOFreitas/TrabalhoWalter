@@ -21,7 +21,7 @@
             <version>3.2</version>
         </dependency>
 
-        <!-- FrontEnd.Componentes extras do FlatLaf -->
+        <!-- FrontEnd.Frontend.Componentes extras do FlatLaf -->
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf-extras</artifactId>

@@ -3,7 +3,7 @@ package Backend.Estoque;
 public class Produto {
 
 
-    //atributes
+    //atributos
 
     private String nome;
     private int quantd;
@@ -11,7 +11,7 @@ public class Produto {
     private String descricao;
 
 
-    //constructor
+    //construtor
 
     public Produto(String nome, float precoUni) {
         this(nome, 1, precoUni, "");
@@ -76,7 +76,7 @@ public class Produto {
     }
 
 
-    //methods
+    //metodos
 
     public boolean temSuficiente(int quantd){
         return (this.quantd - quantd) >= 0;

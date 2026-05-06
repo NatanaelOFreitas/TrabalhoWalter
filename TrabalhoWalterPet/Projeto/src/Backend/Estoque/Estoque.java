@@ -6,12 +6,12 @@ import java.util.List;
 public class Estoque {
 
 
-    //atributes
+    //atributos
 
     private List<Produto> estoque;
 
 
-    //constructor
+    //construtor
 
     public Estoque(){
         this.estoque = new ArrayList<>();
@@ -30,7 +30,7 @@ public class Estoque {
     }
 
 
-    //methods
+    //metodos
 
     public void adicionarProd(Produto p){
         if(posInEstoque(p) != -1){

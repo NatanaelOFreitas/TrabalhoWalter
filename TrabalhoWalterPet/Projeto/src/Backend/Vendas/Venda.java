@@ -9,19 +9,19 @@ import java.util.List;
 public class Venda {
 
 
-    //atributes
+    //atributos
 
     private List<Produto> vendas;
 
 
-    //constructor
+    //construtor
 
     public Venda(){
         this.vendas = new ArrayList<>();
     }
 
 
-    //methods
+    //metodos
 
     public int posInVendas(Produto p){
         for(int i = 0; i<vendas.size(); i++){
