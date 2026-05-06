@@ -4,6 +4,7 @@ public class Produto {
 
 
     // atributos
+
     private String nome;
     private int quantd;
     private float precoUni;
@@ -11,6 +12,7 @@ public class Produto {
 
 
     // construtores
+
     public Produto(String nome, float precoUni) {
         this(nome, 1, precoUni, "");
     }
@@ -28,6 +30,7 @@ public class Produto {
 
 
     // getters
+
     public String getNome() {
         return nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
     }
@@ -50,6 +53,7 @@ public class Produto {
 
 
     // setters
+
     public void setNome(String nome) {
         this.nome = nome.toLowerCase();
     }
@@ -74,8 +78,9 @@ public class Produto {
         this.descricao = descricao.toLowerCase();
     }
 
-    
+
     // métodos
+
     public boolean temSuficiente(int quantd) {
         return (this.quantd - quantd) >= 0;
     }

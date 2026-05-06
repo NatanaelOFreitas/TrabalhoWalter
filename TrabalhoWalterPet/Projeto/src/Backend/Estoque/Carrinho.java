@@ -7,11 +7,13 @@ public class Carrinho {
 
 
     // atributos
+
     private List<Produto> carrinho;
     private float totalCarrinho;
 
 
     // construtor
+
     public Carrinho() {
         this.totalCarrinho = 0.0f;
         this.carrinho = new ArrayList<>();
@@ -19,12 +21,14 @@ public class Carrinho {
 
 
     // setters
+
     public void setTotalCarrinho(float novoTotal) {
         this.totalCarrinho = novoTotal;
     }
 
 
     // getters
+
     public Produto getProduto(int pos) {
 
         if (validPos(pos)) {
@@ -46,8 +50,9 @@ public class Carrinho {
         return carrinho.size();
     }
 
-    
+
     // métodos
+
     public List<String> listarCarrinho() {
 
         List<String> lista = new ArrayList<>();

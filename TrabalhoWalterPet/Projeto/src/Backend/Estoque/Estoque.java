@@ -7,16 +7,19 @@ public class Estoque {
 
 
     // atributos
+
     private List<Produto> estoque;
 
 
     // construtor
+
     public Estoque() {
         this.estoque = new ArrayList<>();
     }
 
 
     // getters
+
     public Produto getProduto(int pos) {
         if (validPos(pos)) {
             return estoque.get(pos);
@@ -35,6 +38,7 @@ public class Estoque {
 
 
     // methods
+
     public void adicionarProd(Produto p) {
 
         int pos = posInEstoque(p);

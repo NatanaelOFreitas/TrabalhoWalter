@@ -1,6 +1,7 @@
 package Backend.Vendas;
 
-import Backend.Estoque.*;
+import Backend.Estoque.Produto;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -9,31 +10,81 @@ import java.util.List;
 public class Venda {
 
 
-    //atributes
+    //atributos
 
     private int id;
     private LocalDateTime dataHora;
-    private List<Produto> vendas;
+    private List<Produto> produtos;
     private float total;
     private String formaPagamento;
 
 
     //construtor
 
-
-    public Venda(int id, List<Produto> vendas, String formaPagamento) {
+    public Venda(int id, List<Produto> produtos, String formaPagamento) {
         this.id = id;
         this.dataHora = LocalDateTime.now();
-        this.vendas = new ArrayList<>(vendas);
+        this.produtos = new ArrayList<>(produtos);
         this.formaPagamento = formaPagamento;
         this.total = calcularTotal();
     }
 
 
-    //getters
+    //métodos
+
+    private float calcularTotal() {
+
+        float soma = 0;
+
+        for (Produto p : produtos) {
+            soma += p.getPrecoUni();
+        }
+
+        return soma;
+    }
+
+    public String gerarComprovante() {
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("===== COMPROVANTE =====\n");
+        sb.append("Venda ID: ").append(id).append("\n");
+
+        sb.append("Data: ")
+                .append(dataHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")))
+                .append("\n");
+
+        List<String> nomes = new ArrayList<>();
+        List<Integer> quantidades = new ArrayList<>();
+
+        for (Produto p : produtos) {
+
+            int index = nomes.indexOf(p.getNome());
+
+            if (index == -1) {
+                nomes.add(p.getNome());
+                quantidades.add(1);
+            }
+            else {
+                quantidades.set(index, quantidades.get(index) + 1);
+            }
+        }
+
+        for (int i = 0; i < nomes.size(); i++) {
+            sb.append(nomes.get(i))
+                    .append(" x")
+                    .append(quantidades.get(i))
+                    .append("\n");
+        }
+
+        sb.append(String.format("Total: R$%.2f\n", total));
+        sb.append("Pagamento: ").append(formaPagamento).append("\n");
+
+        return sb.toString();
+    }
 
     public List<Produto> getProdutos() {
-        return vendas;
+        return produtos;
     }
 
     public float getTotal() {
@@ -46,67 +97,5 @@ public class Venda {
 
     public LocalDateTime getDataHora() {
         return dataHora;
-    }
-
-    //methods
-
-    private float calcularTotal() {
-        float soma = 0;
-
-        for (Produto p : vendas) {
-            soma += p.getPrecoUni();
-        }
-
-        return soma;
-    }
-
-    public void exibirComprovante() {
-        System.out.println("\n===== COMPROVANTE =====");
-        System.out.println("Venda ID: " + id);
-        System.out.println("Data: " + dataHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
-
-        // agrupar manualmente (sem Map)
-        List<String> nomes = new ArrayList<>();
-        List<Integer> quantidades = new ArrayList<>();
-
-        for (Produto p : vendas) {
-            String nome = p.getNome();
-
-            int index = nomes.indexOf(nome);
-
-            if (index == -1) {
-                nomes.add(nome);
-                quantidades.add(1);
-            } else {
-                quantidades.set(index, quantidades.get(index) + 1);
-            }
-        }
-
-        for (int i = 0; i < nomes.size(); i++) {
-            System.out.printf("%s x%d\n", nomes.get(i), quantidades.get(i));
-        }
-
-        System.out.printf("Total: R$%.2f\n", total);
-        System.out.println("Pagamento: " + formaPagamento);
-        System.out.println("=======================\n");
-    }
-
-    public int posInVendas(Produto p){
-        for(int i = 0; i<vendas.size(); i++){
-            if (p.getNome().equals(vendas.get(i).getNome())){
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    public void adicionarVendas(Produto p, int q){
-        if(posInVendas(p) != -1){
-            int total = vendas.get(posInVendas(p)).getQuantd() + q;
-            vendas.get(posInVendas(p)).setQuantd(total);
-        }
-        else{
-            vendas.add(p);
-        }
     }
 }
