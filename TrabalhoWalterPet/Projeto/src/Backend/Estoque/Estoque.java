@@ -69,4 +69,12 @@ public class Estoque {
     public boolean validPos(int pos){
         return pos < estoque.size() && pos >=0;
     }
+
+    public void listarProdNoEstoque(){
+        System.out.print("\n----- Estoque -----");
+        for (int i = 0; i < estoque.size(); i++){
+            System.out.printf("\n[%d] - ", i+1);
+            estoque.get(i).printarProd();
+        }
+    }
 }
