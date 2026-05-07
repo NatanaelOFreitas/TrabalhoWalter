@@ -13,5 +13,14 @@ public class JanelaSistema extends JFrame {
     PainelRelatorios Relatorios = new PainelRelatorios();
     PainelVendas Vendas = new PainelVendas();
 
+    public JanelaSistema() {
+        setTitle("PetShop Miaujuda");
+        setSize(1080, 720);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setResizable(false);
 
+
+
+    }
 }
