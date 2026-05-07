@@ -25,9 +25,9 @@ public class JanelaSistema extends JFrame {
         PainelRelatorios Relatorios = new PainelRelatorios();
         PainelVendas Vendas = new PainelVendas();
 
-        setLayout(new GridLayout(2, 2, 10, 10));  // 2 linhas, 2 colunas, espaços entre painéis
+        setLayout(new GridLayout(2, 2));  // 2 linhas, 2 colunas
         add(Estoque);
-        add(Produtos);
+//        add(Produtos);
         add(Relatorios);
         add(Vendas);
 
