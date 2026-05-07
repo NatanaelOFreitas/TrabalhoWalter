@@ -27,9 +27,9 @@ public class JanelaSistema extends JFrame {
 
         setLayout(new GridLayout(2, 2));  // 2 linhas, 2 colunas
         add(Estoque);
-//        add(Produtos);
-        add(Relatorios);
-        add(Vendas);
+        add(Produtos);
+//        add(Relatorios);
+//        add(Vendas);
 
     }
 }
