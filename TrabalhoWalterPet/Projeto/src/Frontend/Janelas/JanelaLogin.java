@@ -1,16 +1,16 @@
-package Frontend.Principal;
+package Frontend.Janelas;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class JanelaPrincipal extends JFrame {
+public class JanelaLogin extends JFrame {
     private JPasswordField txtSenha;
     private JButton btnEntrar;
     private JLabel lblMensagem;
 
-    public JanelaPrincipal() {
+    public JanelaLogin() {
         setTitle("PetShop Miaujuda");
         setSize(450, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
