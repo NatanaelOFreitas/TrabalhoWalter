@@ -6,65 +6,81 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class JanelaPrincipal extends JFrame {
-    private JTextField txtSenha;
+    private JPasswordField txtSenha;
     private JButton btnEntrar;
+    private JLabel lblMensagem;
 
     public JanelaPrincipal() {
         setTitle("PetShop Miaujuda");
-        setSize(200,150);
+        setSize(450, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
+        setResizable(false);
 
         JPanel painelSenha = new JPanel();
-        painelSenha.setLayout(new GridLayout(0, 1, 5, 5));
+        painelSenha.setBackground(new Color(255, 228, 236));
 
-        JTextArea AreaSenha = new JTextArea(1, 12);
+        //Título
+        JLabel lblTitulo = new JLabel(" PetShop Miaujuda ");
+        lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 22));
+        lblTitulo.setForeground(new Color(255, 20, 147));
+        lblTitulo.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
+        painelSenha.add(lblTitulo, BorderLayout.NORTH);
 
+        //Centro
+        JPanel painelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 30));
+        painelCentro.setBackground(new Color(255, 228, 236));
 
-        JPanel painelSenhaIncorreta = new JPanel();
-        painelSenhaIncorreta.setLayout(new GridLayout(0,1,5,5));
+        //Label da senha
+        JLabel lblSenha = new JLabel("Digite a senha:");
+        lblSenha.setFont(new Font("Arial", Font.PLAIN, 16));
 
-        painelSenha.add(new JLabel("Senha: "));
-        painelSenhaIncorreta.add(new JLabel("Senha Incorreta!"));
+        //Campo da senha
+        txtSenha = new JPasswordField(15);
+        txtSenha.setFont(new Font("Arial", Font.PLAIN, 16));
 
+        painelCentro.add(lblSenha);
+        painelCentro.add(txtSenha);
 
-        add(AreaSenha, BorderLayout.CENTER);
-        add(painelSenha, BorderLayout.PAGE_START);
+        painelSenha.add(painelCentro, BorderLayout.CENTER);
 
+        //Parte de baixo
+        JPanel painelBaixo = new JPanel();
+        painelBaixo.setBackground(new Color(255, 228, 236));
+        painelBaixo.setLayout(new GridLayout(2, 1));
+
+        //Botão entrar
         btnEntrar = new JButton("Entrar");
-        add(btnEntrar,BorderLayout.SOUTH);
+        btnEntrar.setBackground(new Color(255, 105, 180));
+        btnEntrar.setForeground(Color.WHITE);
+        btnEntrar.setFocusPainted(false);
+        btnEntrar.setFont(new Font("Arial", Font.BOLD, 16));
 
-//        btnEntrar.addActionListener(new ActionListener() {
-//            String Senha = "1234";
-//            String SenhaDigitada = AreaSenha.getText();
-//
-//            if (SenhaDigitada == Senha){
-//                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            }
-//            else {
-//                add(painelSenhaIncorreta, BorderLayout.PAGE_END);
-//            }
-//        });
+        //Mensagem
+        lblMensagem = new JLabel("", SwingConstants.CENTER);
+        lblMensagem.setForeground(Color.RED);
+
+        // Evento botão
+        btnEntrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String senha = new String(txtSenha.getPassword());
+                if (senha.equals("1234")) {
+                    lblMensagem.setForeground(new Color(0, 128, 0));
+                    lblMensagem.setText("Login realizado com sucesso!");
+                } else {
+                    lblMensagem.setForeground(Color.RED);
+                    lblMensagem.setText("Senha incorreta!");
+                }
+            }
+        });
+
+        painelBaixo.add(btnEntrar);
+        painelBaixo.add(lblMensagem);
+
+        painelSenha.add(painelBaixo, BorderLayout.SOUTH);
+
+        add(painelSenha);
     }
 }
-
-
-
-//JanelaPrincipal (JFrame)
-//├── Barra de Título (customizada)
-//├── Menu Lateral Esquerdo (JPanel)
-//│   ├── Logo/Título do App
-//│   └── Botões de Navegação
-//│       ├── Dashboard
-//│       ├── Produtos
-//│       ├── Estoque
-//│       ├── Vendas
-//│       └── Relatórios
-//└── Área de Conteúdo (JPanel)
-//    └── Painel Principal (card layout)
-//        ├── PainelDashboard
-//        ├── PainelProdutos
-//        ├── PainelEstoque
-//        ├── PainelVendas
-//        └── PainelRelatorios
