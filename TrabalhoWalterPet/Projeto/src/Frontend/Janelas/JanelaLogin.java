@@ -1,15 +1,15 @@
-package Frontend.Principal;
+package Frontend.Janelas;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class JanelaPrincipal extends JFrame {
+public class JanelaLogin extends JFrame {
     private JTextField txtSenha;
     private JButton btnEntrar;
 
-    public JanelaPrincipal() {
+    public JanelaLogin() {
         setTitle("PetShop Miaujuda");
         setSize(200,150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,7 +42,9 @@ public class JanelaPrincipal extends JFrame {
                 String SenhaDigitada = AreaSenha.getText();
 
                 if (SenhaDigitada.equals(Senha)){
-                    System.exit(0);                         //Validar se esse é o comando certo pra trocar de tela
+                    dispose();                                       //Validar se esse é o comando certo pra trocar de tela
+                    JanelaSistema Sistema = new JanelaSistema();
+                    Sistema.setVisible(true);
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Senha Incorreta!");
