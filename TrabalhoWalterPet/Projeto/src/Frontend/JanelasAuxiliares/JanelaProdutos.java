@@ -1,4 +1,4 @@
-package Frontend.Paineis;
+package Frontend.JanelasAuxiliares;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -6,7 +6,8 @@ import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class PainelProdutos extends JFrame{
+public class JanelaProdutos extends JFrame{
+
     private JTable tabelaProdutos;
     private DefaultTableModel modeloTabela;
     private JTextField txtBusca;
@@ -15,7 +16,7 @@ public class PainelProdutos extends JFrame{
     private final Color fundo = new Color(245, 240, 255);
     private final Color roxoPastel = new Color(170, 140, 220);
 
-    public PainelProdutos() {
+    public JanelaProdutos() {
         setTitle("Gerenciamento de Produtos");
         setSize(900, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
