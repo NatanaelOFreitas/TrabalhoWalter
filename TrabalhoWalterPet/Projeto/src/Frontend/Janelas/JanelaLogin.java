@@ -73,8 +73,9 @@ public class JanelaLogin extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String senha = new String(txtSenha.getPassword());
                 if (senha.equals("1234")) {
-                    lblMensagem.setForeground(new Color(0, 128, 0));
-                    lblMensagem.setText("Login realizado com sucesso!");
+                    dispose();
+                    JanelaSistema Sistema = new JanelaSistema();
+                    Sistema.setVisible(true);
                 } else {
                     lblMensagem.setForeground(Color.RED);
                     lblMensagem.setText("Senha incorreta!");
