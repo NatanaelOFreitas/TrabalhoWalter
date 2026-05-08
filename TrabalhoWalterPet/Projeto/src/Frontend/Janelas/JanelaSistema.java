@@ -88,79 +88,6 @@ public class JanelaSistema extends JFrame {
         JPanel painelListas = new JPanel(new GridLayout(1, 2, 15, 15));
         painelListas.setBackground(fundo);
 
-        // ===== ÚLTIMAS VENDAS =====
-        JPanel painelVendas = new JPanel(new BorderLayout());
-        painelVendas.setBackground(branco);
-        painelVendas.setBorder(
-                BorderFactory.createLineBorder(roxoPastel, 2));
-
-        JLabel lblVendas =
-                new JLabel("Últimos Produtos Vendidos Hoje");
-
-        lblVendas.setFont(new Font("Arial", Font.BOLD, 18));
-        lblVendas.setForeground(roxoPastel);
-
-        DefaultListModel<String> modeloVendas =
-                new DefaultListModel<>();
-
-        modeloVendas.addElement("COLOCAR FUNÇÃO PARA PRINTAR VENDAS REAIS");
-        modeloVendas.addElement("");
-        modeloVendas.addElement("Ração Golden - 2 unidades");
-        modeloVendas.addElement("Shampoo Pet - 1 unidade");
-        modeloVendas.addElement("Coleira Azul - 3 unidades");
-        modeloVendas.addElement("Brinquedo Osso - 1 unidade");
-
-        JList<String> listaVendas =
-                new JList<>(modeloVendas);
-
-        painelVendas.add(lblVendas, BorderLayout.NORTH);
-        painelVendas.add(
-                new JScrollPane(listaVendas),
-                BorderLayout.CENTER
-        );
-
-        // ===== ESTOQUE BAIXO =====
-        JPanel painelEstoqueBaixo =
-                new JPanel(new BorderLayout());
-
-        painelEstoqueBaixo.setBackground(branco);
-
-        painelEstoqueBaixo.setBorder(
-                BorderFactory.createLineBorder(Color.RED, 2));
-
-        JLabel lblEstoqueBaixo =
-                new JLabel("Produtos com Estoque Baixo");
-
-        lblEstoqueBaixo.setFont(
-                new Font("Arial", Font.BOLD, 18));
-
-        lblEstoqueBaixo.setForeground(Color.RED);
-
-        DefaultListModel<String> modeloEstoque =
-                new DefaultListModel<>();
-
-        modeloEstoque.addElement("COLOCAR FUNÇÃO PARA PRINTAR O QUE ESTÁ EM FALTA");
-        modeloEstoque.addElement("");
-        modeloEstoque.addElement("Ração Premium - 2 unidades");
-        modeloEstoque.addElement("Tapete Higiênico - 1 unidade");
-        modeloEstoque.addElement("Antipulgas - 3 unidades");
-
-        JList<String> listaEstoque =
-                new JList<>(modeloEstoque);
-
-        painelEstoqueBaixo.add(
-                lblEstoqueBaixo,
-                BorderLayout.NORTH
-        );
-
-        painelEstoqueBaixo.add(
-                new JScrollPane(listaEstoque),
-                BorderLayout.CENTER
-        );
-
-        painelListas.add(painelVendas);
-        painelListas.add(painelEstoqueBaixo);
-
         // ===== ADICIONANDO =====
         painelPrincipal.add(painelTopo, BorderLayout.NORTH);
         painelPrincipal.add(painelCards, BorderLayout.CENTER);
@@ -204,16 +131,6 @@ public class JanelaSistema extends JFrame {
             }
         });
 
-        // Estoque baixo clicável
-        listaEstoque.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-                fecharJanelaAtual();
-                janelaAtual = new JanelaProdutos();
-                janelaAtual.setVisible(true);
-            }
-        });
     }
 
     void fecharJanelaAtual() {
