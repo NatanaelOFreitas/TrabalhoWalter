@@ -52,7 +52,6 @@ public class JanelaVendas extends JFrame {
 
         btnVoltar.addActionListener(e -> {
             dispose();
-            new JanelaSistema().setVisible(true);
         });
         topo.add(titulo, BorderLayout.WEST);
         topo.add(btnVoltar, BorderLayout.EAST);

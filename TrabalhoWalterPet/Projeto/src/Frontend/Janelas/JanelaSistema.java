@@ -6,6 +6,8 @@ import Frontend.JanelasAuxiliares.JanelaVendas;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -15,6 +17,8 @@ public class JanelaSistema extends JFrame {
     private final Color fundo = new Color(245, 240, 255);
     private final Color roxoPastel = new Color(170, 140, 220);
     private final Color branco = Color.WHITE;
+    private JFrame janelaAtual;
+
 
     public JanelaSistema() {
 
@@ -160,6 +164,26 @@ public class JanelaSistema extends JFrame {
 
         add(painelPrincipal);
 
+//
+//
+//
+//        btnVendas.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//                fecharJanelaAtual();
+//                janelaAtual = new JanelaVendas();
+//                janelaAtual.setVisible(true);
+//            }
+//        });
+//    }
+//
+
+//
+//
+//
+
+
         // ===== CLIQUES DOS CARDS =====
 
         // Produtos
@@ -167,7 +191,10 @@ public class JanelaSistema extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
 
-                new JanelaProdutos().setVisible(true);
+                fecharJanelaAtual();
+                janelaAtual = new JanelaProdutos();
+                janelaAtual.setVisible(true);
+
             }
         });
 
@@ -175,7 +202,10 @@ public class JanelaSistema extends JFrame {
         cardReposicao.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new JanelaEstoque().setVisible(true);
+
+                fecharJanelaAtual();
+                janelaAtual = new JanelaEstoque();
+                janelaAtual.setVisible(true);
             }
         });
 
@@ -183,7 +213,10 @@ public class JanelaSistema extends JFrame {
         cardVendas.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new JanelaVendas().setVisible(true);
+
+                fecharJanelaAtual();
+                janelaAtual = new JanelaVendas();
+                janelaAtual.setVisible(true);
             }
         });
 
@@ -191,9 +224,19 @@ public class JanelaSistema extends JFrame {
         listaEstoque.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new JanelaProdutos().setVisible(true);
+
+                fecharJanelaAtual();
+                janelaAtual = new JanelaProdutos();
+                janelaAtual.setVisible(true);
             }
         });
+    }
+
+    void fecharJanelaAtual() {
+
+        if (janelaAtual != null) {
+            janelaAtual.dispose();
+        }
     }
 
     // ===== MÉTODO CARD =====
@@ -257,6 +300,8 @@ public class JanelaSistema extends JFrame {
                 card.setBackground(branco);
             }
         });
+
+
 
         return card;
     }

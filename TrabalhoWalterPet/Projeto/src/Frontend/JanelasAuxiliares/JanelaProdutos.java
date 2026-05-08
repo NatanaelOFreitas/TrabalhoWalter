@@ -241,7 +241,6 @@ public class JanelaProdutos extends JFrame {
     // Voltar
     private void voltarTela() {
         dispose();
-        new JanelaSistema().setVisible(true);
     }
 
     // Estilo dos botões
