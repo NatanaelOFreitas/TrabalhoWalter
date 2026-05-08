@@ -1,5 +1,9 @@
 package Backend.Estoque;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Produto {
 
 
@@ -80,6 +84,8 @@ public class Produto {
 
 
     // métodos
+    public static List<Object[]> produtos = new ArrayList<>();
+
 
     public boolean temSuficiente(int quantd) {
         return (this.quantd - quantd) >= 0;

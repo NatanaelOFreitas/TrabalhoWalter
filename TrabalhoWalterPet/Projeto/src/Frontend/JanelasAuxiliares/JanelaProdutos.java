@@ -1,5 +1,7 @@
 package Frontend.JanelasAuxiliares;
 
+import Backend.Estoque.Estoque;
+import Backend.Estoque.Produto;
 import Frontend.Janelas.JanelaSistema;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -101,6 +103,8 @@ public class JanelaProdutos extends JFrame {
         painelPrincipal.add(painelAcoes, BorderLayout.SOUTH);
 
         add(painelPrincipal);
+
+        carregarProdutos();
     }
 
     private void abrirModalProduto(boolean editando) {
@@ -138,14 +142,14 @@ public class JanelaProdutos extends JFrame {
         painelBotoes.add(btnCancelar);
 
         btnSalvar.addActionListener(e -> {
-
-            modeloTabela.addRow(new Object[] {
+            Object[] produto = {
                     txtNome.getText(),
                     txtPreco.getText(),
                     txtQuantidade.getText(),
                     txtDescricao.getText()
-
-            });
+            };
+            Produto.produtos.add(produto);
+            modeloTabela.addRow(produto);
             modal.dispose();
         });
         btnCancelar.addActionListener(e -> modal.dispose());
@@ -153,6 +157,14 @@ public class JanelaProdutos extends JFrame {
         modal.add(painel, BorderLayout.CENTER);
         modal.add(painelBotoes, BorderLayout.SOUTH);
         modal.setVisible(true);
+    }
+
+    // Carregar os produtos
+    private void carregarProdutos() {
+        modeloTabela.setRowCount(0);
+        for(Object[] produto : Produto.produtos) {
+            modeloTabela.addRow(produto);
+        }
     }
 
     // Editar
@@ -211,12 +223,23 @@ public class JanelaProdutos extends JFrame {
         int linhaFinal = linha;
 
         btnSalvar.addActionListener(e -> {
-            modeloTabela.setValueAt(txtNome.getText(), linhaFinal, 0);
-            modeloTabela.setValueAt(txtPreco.getText(), linhaFinal, 1);
-            modeloTabela.setValueAt(txtQuantidade.getText(), linhaFinal, 2);
-            modeloTabela.setValueAt(txtDescricao.getText(), linhaFinal, 3);
+            Object[] produtoAtualizado = {
+                    txtNome.getText(),
+                    txtPreco.getText(),
+                    txtQuantidade.getText(),
+                    txtDescricao.getText()
+            };
+            // Atualiza tabela
+            modeloTabela.setValueAt(txtNome.getText(),linhaFinal,0);
+            modeloTabela.setValueAt( txtPreco.getText(), linhaFinal,1);
+            modeloTabela.setValueAt(txtQuantidade.getText(),linhaFinal,2);
+            modeloTabela.setValueAt(txtDescricao.getText(),linhaFinal,3);
+            // Atualiza banco
+            Produto.produtos.set(linhaFinal, produtoAtualizado);
+
             modal.dispose();
         });
+
         btnCancelar.addActionListener(e -> modal.dispose());
         modal.setLayout(new BorderLayout());
         modal.add(painel, BorderLayout.CENTER);
@@ -236,6 +259,7 @@ public class JanelaProdutos extends JFrame {
         if (confirmacao == JOptionPane.YES_NO_OPTION) {
             linha = tabelaProdutos.convertRowIndexToModel(linha);
             modeloTabela.removeRow(linha);
+            Produto.produtos.remove(linha);
         }
     }
 

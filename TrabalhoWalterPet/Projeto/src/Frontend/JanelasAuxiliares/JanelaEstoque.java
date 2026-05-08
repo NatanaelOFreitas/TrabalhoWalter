@@ -1,7 +1,7 @@
 package Frontend.JanelasAuxiliares;
 
 import Frontend.Janelas.JanelaSistema;
-
+import Backend.Estoque.Produto;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -77,12 +77,6 @@ public class JanelaEstoque extends JFrame {
         tabelaEstoque.setRowHeight(30);
         tabelaEstoque.setFont(new Font("Arial",Font.PLAIN,14));
 
-        // Exemplos iniciais
-        adicionarProduto("Ração Golden",120.00,10);
-        adicionarProduto("Shampoo Pet", 35.00,3);
-        adicionarProduto("Coleira Azul",20.00,15);
-        adicionarProduto("Brinquedo Bola",18.00, 2);
-
         // Estoque baixo
         tabelaEstoque.setDefaultRenderer(Object.class,new EstoqueRenderer());
 
@@ -134,6 +128,20 @@ public class JanelaEstoque extends JFrame {
 
         add(painelPrincipal);
 
+        atualizarResumo();
+
+        carregarProdutos();
+    }
+
+    // Carregar os produtos
+    private void carregarProdutos() {
+        modeloTabela.setRowCount(0);
+        for(Object[] produto : Produto.produtos) {
+            String nome = produto[0].toString();
+            double preco = Double.parseDouble(produto[1].toString());
+            int quantidade = Integer.parseInt(produto[2].toString());
+            modeloTabela.addRow(new Object[]{nome,preco,quantidade});
+        }
         atualizarResumo();
     }
 
@@ -187,6 +195,7 @@ public class JanelaEstoque extends JFrame {
             }
         }
         modeloTabela.setValueAt(novoValor,linha,2);
+        Produto.produtos.get(linha)[2] = String.valueOf(novoValor);
 
 
         String nome =  modeloTabela.getValueAt(linha,0).toString();
