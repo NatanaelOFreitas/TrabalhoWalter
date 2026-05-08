@@ -19,7 +19,6 @@ public class JanelaProdutos extends JFrame {
     public JanelaProdutos() {
         setTitle("Gerenciamento de Produtos");
         setSize(900, 500);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         JPanel painelPrincipal = new JPanel(new BorderLayout(10, 10));

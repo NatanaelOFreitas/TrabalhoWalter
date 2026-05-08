@@ -30,7 +30,6 @@ public class JanelaEstoque extends JFrame {
         setTitle("Controle de Estoque");
         setSize(1200, 700);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Painel Principal
         JPanel painelPrincipal = new JPanel(new BorderLayout(15,15));
