@@ -1,6 +1,4 @@
-
 import Frontend.Janelas.JanelaLogin;
-
 import javax.swing.*;
 
 public class Main {

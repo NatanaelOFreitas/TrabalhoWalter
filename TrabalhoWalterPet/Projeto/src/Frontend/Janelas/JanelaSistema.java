@@ -1,6 +1,7 @@
 package Frontend.Janelas;
 
 import Frontend.JanelasAuxiliares.JanelaProdutos;
+import Frontend.JanelasAuxiliares.JanelaVendas;
 
 import javax.swing.*;
 import java.awt.*;
@@ -178,6 +179,14 @@ public class JanelaSistema extends JFrame {
                         null,
                         "Abrir tela de estoque!"
                 );
+            }
+        });
+
+        // Vendas
+        cardVendas.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new JanelaVendas().setVisible(true);
             }
         });
 
