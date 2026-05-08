@@ -32,7 +32,6 @@ public class JanelaVendas extends JFrame {
         setTitle("Tela de Vendas");
         setSize(1200, 650);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel painelPrincipal = new JPanel(new BorderLayout(15, 15));
         painelPrincipal.setBackground(fundo);

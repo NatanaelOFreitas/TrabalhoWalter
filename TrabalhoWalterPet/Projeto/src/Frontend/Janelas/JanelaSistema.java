@@ -53,22 +53,22 @@ public class JanelaSistema extends JFrame {
 
         JPanel cardVendas =
                 criarCard(
-                        "Vendas Hoje",
-                        "15 vendas",
-                        "R$ 1.250,00"
+                        "Sistema Vendas",
+                        "",
+                        ""
                 );
 
         JPanel cardEstoque =
                 criarCard(
-                        "Produtos em Estoque",
-                        "250 itens",
+                        "Gerenciamento de Produtos",
+                        "",
                         ""
                 );
 
         JPanel cardReposicao =
                 criarCard(
-                        "Alertas de Reposição",
-                        "8 produtos",
+                        "Gerenciamento de Estoque",
+                        "",
                         ""
                 );
 
@@ -76,7 +76,7 @@ public class JanelaSistema extends JFrame {
                 criarCard(
                         "Última Venda",
                         "R$ 89,90",
-                        ""
+                        " (criar um jeito de falar qual foi o produto vendido) "
                 );
 
         painelCards.add(cardVendas);
@@ -103,6 +103,8 @@ public class JanelaSistema extends JFrame {
         DefaultListModel<String> modeloVendas =
                 new DefaultListModel<>();
 
+        modeloVendas.addElement("COLOCAR FUNÇÃO PARA PRINTAR VENDAS REAIS");
+        modeloVendas.addElement("");
         modeloVendas.addElement("Ração Golden - 2 unidades");
         modeloVendas.addElement("Shampoo Pet - 1 unidade");
         modeloVendas.addElement("Coleira Azul - 3 unidades");
@@ -137,6 +139,8 @@ public class JanelaSistema extends JFrame {
         DefaultListModel<String> modeloEstoque =
                 new DefaultListModel<>();
 
+        modeloEstoque.addElement("COLOCAR FUNÇÃO PARA PRINTAR O QUE ESTÁ EM FALTA");
+        modeloEstoque.addElement("");
         modeloEstoque.addElement("Ração Premium - 2 unidades");
         modeloEstoque.addElement("Tapete Higiênico - 1 unidade");
         modeloEstoque.addElement("Antipulgas - 3 unidades");
@@ -163,26 +167,6 @@ public class JanelaSistema extends JFrame {
         painelPrincipal.add(painelListas, BorderLayout.SOUTH);
 
         add(painelPrincipal);
-
-//
-//
-//
-//        btnVendas.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//                fecharJanelaAtual();
-//                janelaAtual = new JanelaVendas();
-//                janelaAtual.setVisible(true);
-//            }
-//        });
-//    }
-//
-
-//
-//
-//
-
 
         // ===== CLIQUES DOS CARDS =====
 
