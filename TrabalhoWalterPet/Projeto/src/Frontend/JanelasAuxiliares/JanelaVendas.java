@@ -1,7 +1,6 @@
 package Frontend.JanelasAuxiliares;
 
 import Frontend.Janelas.JanelaSistema;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -10,318 +9,157 @@ import java.text.DecimalFormat;
 
 public class JanelaVendas extends JFrame {
 
-    // ===== TABELAS =====
+    // Tabelas
     private JTable tabelaProdutos;
     private JTable tabelaCarrinho;
 
     private DefaultTableModel modeloProdutos;
     private DefaultTableModel modeloCarrinho;
 
-    // ===== COMPONENTES =====
+    // Componentes
     private JTextField txtBusca;
     private JSpinner spinnerQuantidade;
     private JLabel lblTotal;
 
-    // ===== CORES =====
+    // Cores
     private final Color fundo = new Color(245, 240, 255);
     private final Color roxoPastel = new Color(170, 140, 220);
 
-    // ===== FORMATADOR =====
-    private final DecimalFormat df =
-            new DecimalFormat("R$ #,##0.00");
+    // Formatador
+    private final DecimalFormat df = new DecimalFormat("R$ #,##0.00");
 
     public JanelaVendas() {
-
         setTitle("Tela de Vendas");
         setSize(1200, 650);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel painelPrincipal =
-                new JPanel(new BorderLayout(15, 15));
-
+        JPanel painelPrincipal = new JPanel(new BorderLayout(15, 15));
         painelPrincipal.setBackground(fundo);
 
-        painelPrincipal.setBorder(
-                BorderFactory.createEmptyBorder(
-                        15,15,15,15
-                )
-        );
+        painelPrincipal.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
 
-        // =========================
-        // TOPO
-        // =========================
+        // Topo
         JPanel topo = new JPanel(new BorderLayout());
         topo.setBackground(fundo);
 
-        JLabel titulo =
-                new JLabel("Sistema de Vendas");
-
-        titulo.setFont(
-                new Font("Arial",
-                        Font.BOLD,
-                        28)
-        );
-
+        JLabel titulo = new JLabel("Sistema de Vendas");
+        titulo.setFont( new Font("Arial",Font.BOLD,28));
         titulo.setForeground(roxoPastel);
 
-        JButton btnVoltar =
-                new JButton("Voltar");
-
+        JButton btnVoltar = new JButton("Voltar");
         estilizarBotao(btnVoltar);
 
         btnVoltar.addActionListener(e -> {
-
             dispose();
-
             new JanelaSistema().setVisible(true);
         });
-
         topo.add(titulo, BorderLayout.WEST);
         topo.add(btnVoltar, BorderLayout.EAST);
 
-        // =========================
-        // CENTRO
-        // =========================
-        JPanel centro =
-                new JPanel(new GridLayout(1,2,15,15));
-
+        // Centro
+        JPanel centro = new JPanel(new GridLayout(1,2,15,15));
         centro.setBackground(fundo);
 
-        // ==================================
-        // PRODUTOS
-        // ==================================
-        JPanel painelProdutos =
-                new JPanel(new BorderLayout(10,10));
-
+        // Produtos
+        JPanel painelProdutos =  new JPanel(new BorderLayout(10,10));
         painelProdutos.setBackground(Color.WHITE);
+        painelProdutos.setBorder(BorderFactory.createTitledBorder("Produtos Disponíveis"));
 
-        painelProdutos.setBorder(
-                BorderFactory.createTitledBorder(
-                        "Produtos Disponíveis"
-                )
-        );
-
-        JPanel painelBusca =
-                new JPanel(new FlowLayout(
-                        FlowLayout.LEFT
-                ));
-
+        JPanel painelBusca =  new JPanel(new FlowLayout(FlowLayout.LEFT));
         painelBusca.setBackground(Color.WHITE);
 
         txtBusca = new JTextField(20);
 
-        JButton btnBuscar =
-                new JButton("Buscar");
-
+        JButton btnBuscar = new JButton("Buscar");
         estilizarBotao(btnBuscar);
 
-        painelBusca.add(
-                new JLabel("Buscar:")
-        );
-
+        painelBusca.add(new JLabel("Buscar:"));
         painelBusca.add(txtBusca);
-
         painelBusca.add(btnBuscar);
 
-        String[] colunasProdutos = {
+        String[] colunasProdutos = {"Nome", "Preço", "Quantidade"};
 
-                "Nome",
-                "Preço",
-                "Quantidade"
+        modeloProdutos =  new DefaultTableModel(colunasProdutos,0);
 
-        };
-
-        modeloProdutos =
-                new DefaultTableModel(
-                        colunasProdutos,
-                        0
-                );
-
-        tabelaProdutos =
-                new JTable(modeloProdutos);
-
+        tabelaProdutos = new JTable(modeloProdutos);
         tabelaProdutos.setRowHeight(25);
 
-        JScrollPane scrollProdutos =
-                new JScrollPane(tabelaProdutos);
+        JScrollPane scrollProdutos = new JScrollPane(tabelaProdutos);
 
-        // =========================
-        // DADOS MOCKADOS
-        // =========================
-        modeloProdutos.addRow(new Object[]{
-                "Ração Golden",
-                120.00,
-                10
-        });
+        // Exemplos iniciais
+        modeloProdutos.addRow(new Object[]{"Ração Golden", 120.00, 10});
 
-        modeloProdutos.addRow(new Object[]{
-                "Shampoo Pet",
-                35.50,
-                15
-        });
+        modeloProdutos.addRow(new Object[]{"Shampoo Pet", 35.50, 15});
 
-        modeloProdutos.addRow(new Object[]{
-                "Coleira Azul",
-                25.90,
-                20
-        });
+        modeloProdutos.addRow(new Object[]{"Coleira Azul", 25.90, 20});
 
-        modeloProdutos.addRow(new Object[]{
-                "Brinquedo Osso",
-                18.00,
-                8
-        });
+        modeloProdutos.addRow(new Object[]{"Brinquedo Osso", 18.00, 8});
 
-        // ORDENAR E PESQUISAR
-        TableRowSorter<DefaultTableModel> sorter =
-                new TableRowSorter<>(modeloProdutos);
-
+        // Ordenar e pesquisar
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modeloProdutos);
         tabelaProdutos.setRowSorter(sorter);
 
         btnBuscar.addActionListener(e -> {
-
             String texto =
                     txtBusca.getText();
-
             if(texto.trim().isEmpty()) {
-
                 sorter.setRowFilter(null);
-
-            } else {
-
-                sorter.setRowFilter(
-                        RowFilter.regexFilter(
-                                "(?i)" + texto
-                        )
-                );
+            }
+            else {
+                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + texto));
             }
         });
 
-        // ==================================
-        // ADICIONAR AO CARRINHO
-        // ==================================
-        JPanel painelAdicionar =
-                new JPanel(new FlowLayout());
-
+        // Adicionar no carrinho
+        JPanel painelAdicionar = new JPanel(new FlowLayout());
         painelAdicionar.setBackground(Color.WHITE);
 
-        spinnerQuantidade =
-                new JSpinner(
-                        new SpinnerNumberModel(
-                                1,
-                                1,
-                                999,
-                                1
-                        )
-                );
+        spinnerQuantidade = new JSpinner(new SpinnerNumberModel(  1, 1,999,1));
 
-        JButton btnAdicionar =
-                new JButton(
-                        "Adicionar ao Carrinho"
-                );
-
+        JButton btnAdicionar = new JButton("Adicionar ao Carrinho");
         estilizarBotao(btnAdicionar);
 
-        painelAdicionar.add(
-                new JLabel("Quantidade:")
-        );
-
+        painelAdicionar.add(new JLabel("Quantidade:"));
         painelAdicionar.add(spinnerQuantidade);
-
         painelAdicionar.add(btnAdicionar);
 
-        painelProdutos.add(
-                painelBusca,
-                BorderLayout.NORTH
-        );
+        painelProdutos.add(painelBusca, BorderLayout.NORTH);
+        painelProdutos.add(scrollProdutos, BorderLayout.CENTER);
+        painelProdutos.add(painelAdicionar, BorderLayout.SOUTH);
 
-        painelProdutos.add(
-                scrollProdutos,
-                BorderLayout.CENTER
-        );
-
-        painelProdutos.add(
-                painelAdicionar,
-                BorderLayout.SOUTH
-        );
-
-        // ==================================
-        // CARRINHO
-        // ==================================
-        JPanel painelCarrinho =
-                new JPanel(new BorderLayout(10,10));
-
+        // Carrinho
+        JPanel painelCarrinho = new JPanel(new BorderLayout(10,10));
         painelCarrinho.setBackground(Color.WHITE);
+        painelCarrinho.setBorder(BorderFactory.createTitledBorder("Carrinho"));
 
-        painelCarrinho.setBorder(
-                BorderFactory.createTitledBorder(
-                        "Carrinho"
-                )
-        );
+        String[] colunasCarrinho = {"Produto", "Qtd", "Preço", "Subtotal"};
 
-        String[] colunasCarrinho = {
+        modeloCarrinho = new DefaultTableModel(colunasCarrinho, 0);
 
-                "Produto",
-                "Qtd",
-                "Preço",
-                "Subtotal"
-
-        };
-
-        modeloCarrinho =
-                new DefaultTableModel(
-                        colunasCarrinho,
-                        0
-                );
-
-        tabelaCarrinho =
-                new JTable(modeloCarrinho);
-
+        tabelaCarrinho =new JTable(modeloCarrinho);
         tabelaCarrinho.setRowHeight(25);
 
-        JScrollPane scrollCarrinho =
-                new JScrollPane(tabelaCarrinho);
+        JScrollPane scrollCarrinho = new JScrollPane(tabelaCarrinho);
 
-        // ==================================
-        // TOTAL
-        // ==================================
-        lblTotal =
-                new JLabel("Total: R$ 0,00");
+        // Total
+        lblTotal = new JLabel("Total: R$ 0,00");
+        lblTotal.setFont(new Font("Arial",Font.BOLD,24));
+        lblTotal.setForeground(new Color(46, 204, 113));
 
-        lblTotal.setFont(
-                new Font("Arial",
-                        Font.BOLD,
-                        24)
-        );
-
-        lblTotal.setForeground(
-                new Color(46, 204, 113)
-        );
-
-        // ==================================
-        // PAGAMENTO
-        // ==================================
-        JPanel painelPagamento =
-                new JPanel(new GridLayout(5,1,10,10));
-
+        // Pagamento
+        JPanel painelPagamento = new JPanel(new GridLayout(6,1,10,10));
         painelPagamento.setBackground(Color.WHITE);
 
-        JComboBox<String> comboPagamento =
-                new JComboBox<>();
+        JComboBox<String> comboPagamento = new JComboBox<>();
 
         comboPagamento.addItem("Dinheiro");
         comboPagamento.addItem("Cartão");
         comboPagamento.addItem("PIX");
 
-        JButton btnRemover =
-                new JButton("Remover Item");
-
-        JButton btnCancelar =
-                new JButton("Cancelar Venda");
-
-        JButton btnFinalizar =
-                new JButton("Finalizar Venda");
+        JButton btnRemover = new JButton("Remover Item");
+        JButton btnCancelar = new JButton("Cancelar Venda");
+        JButton btnFinalizar = new JButton("Finalizar Venda");
 
         estilizarBotao(btnRemover);
         estilizarBotao(btnCancelar);
@@ -329,27 +167,13 @@ public class JanelaVendas extends JFrame {
 
         painelPagamento.add(lblTotal);
 
-        painelPagamento.add(
-                new JLabel("Forma de Pagamento:")
-        );
-
+        painelPagamento.add(new JLabel("Forma de Pagamento:"));
         painelPagamento.add(comboPagamento);
-
         painelPagamento.add(btnRemover);
-
         painelPagamento.add(btnCancelar);
-
         painelPagamento.add(btnFinalizar);
-
-        painelCarrinho.add(
-                scrollCarrinho,
-                BorderLayout.CENTER
-        );
-
-        painelCarrinho.add(
-                painelPagamento,
-                BorderLayout.SOUTH
-        );
+        painelCarrinho.add(scrollCarrinho, BorderLayout.CENTER);
+        painelCarrinho.add(painelPagamento, BorderLayout.SOUTH);
 
         centro.add(painelProdutos);
         centro.add(painelCarrinho);
@@ -359,9 +183,7 @@ public class JanelaVendas extends JFrame {
 
         add(painelPrincipal);
 
-        // ==================================
-        // EVENTOS
-        // ==================================
+        // Eventos
         btnAdicionar.addActionListener(e -> {
             adicionarCarrinho();
         });
@@ -375,228 +197,92 @@ public class JanelaVendas extends JFrame {
         });
 
         btnFinalizar.addActionListener(e -> {
-            finalizarVenda(
-                    comboPagamento
-                            .getSelectedItem()
-                            .toString()
-            );
+            finalizarVenda(comboPagamento.getSelectedItem().toString());
         });
     }
 
-    // ======================================
-    // ADICIONAR AO CARRINHO
-    // ======================================
+    // Adicionar no carrinho
     private void adicionarCarrinho() {
-
-        int linha =
-                tabelaProdutos.getSelectedRow();
-
+        int linha = tabelaProdutos.getSelectedRow();
         if(linha == -1) {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Selecione um produto!"
-            );
-
+            JOptionPane.showMessageDialog(this,"Selecione um produto!");
             return;
         }
+        String nome = tabelaProdutos.getValueAt(linha,0).toString();
+        double preco = Double.parseDouble(tabelaProdutos.getValueAt(linha,1).toString());
+        int quantidade = (Integer)spinnerQuantidade.getValue();
+        double subtotal = preco * quantidade;
 
-        String nome =
-                tabelaProdutos
-                        .getValueAt(linha,0)
-                        .toString();
-
-        double preco =
-                Double.parseDouble(
-                        tabelaProdutos
-                                .getValueAt(linha,1)
-                                .toString()
-                );
-
-        int quantidade =
-                (Integer)
-                        spinnerQuantidade
-                                .getValue();
-
-        double subtotal =
-                preco * quantidade;
-
-        modeloCarrinho.addRow(new Object[]{
-
-                nome,
-                quantidade,
-                preco,
-                subtotal
-        });
+        modeloCarrinho.addRow(new Object[]{nome, quantidade, preco, subtotal});
 
         atualizarTotal();
     }
 
-    // ======================================
-    // REMOVER ITEM
-    // ======================================
+    // Remover item
     private void removerCarrinho() {
-
-        int linha =
-                tabelaCarrinho.getSelectedRow();
-
+        int linha = tabelaCarrinho.getSelectedRow();
         if(linha == -1) {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Selecione um item!"
-            );
-
+            JOptionPane.showMessageDialog( this,"Selecione um item!");
             return;
         }
-
         modeloCarrinho.removeRow(linha);
 
         atualizarTotal();
     }
 
-    // ======================================
-    // CANCELAR VENDA
-    // ======================================
+    // Cancelar venda
     private void cancelarVenda() {
-
         modeloCarrinho.setRowCount(0);
 
         atualizarTotal();
 
-        JOptionPane.showMessageDialog(
-                this,
-                "Venda cancelada!"
-        );
+        JOptionPane.showMessageDialog(this,"Venda cancelada!");
     }
 
-    // ======================================
-    // FINALIZAR VENDA
-    // ======================================
-    private void finalizarVenda(
-            String pagamento
-    ) {
-
+    // Finalizar venda
+    private void finalizarVenda(String pagamento) {
         if(modeloCarrinho.getRowCount() == 0) {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Carrinho vazio!"
-            );
-
+            JOptionPane.showMessageDialog(this,"Carrinho vazio!");
             return;
         }
-
         double total = 0;
 
-        StringBuilder comprovante =
-                new StringBuilder();
+        StringBuilder comprovante = new StringBuilder();
 
-        comprovante.append(
-                "===== COMPROVANTE =====\n\n"
-        );
-
-        for(int i = 0;
-            i < modeloCarrinho.getRowCount();
-            i++) {
-
-            String nome =
-                    modeloCarrinho
-                            .getValueAt(i,0)
-                            .toString();
-
-            int qtd =
-                    Integer.parseInt(
-                            modeloCarrinho
-                                    .getValueAt(i,1)
-                                    .toString()
-                    );
-
-            double subtotal =
-                    Double.parseDouble(
-                            modeloCarrinho
-                                    .getValueAt(i,3)
-                                    .toString()
-                    );
-
+        comprovante.append("===== COMPROVANTE =====\n\n");
+        for(int i = 0;i < modeloCarrinho.getRowCount();i++) {
+            String nome = modeloCarrinho.getValueAt(i,0).toString();
+            int qtd = Integer.parseInt(modeloCarrinho.getValueAt(i,1).toString());
+            double subtotal = Double.parseDouble(modeloCarrinho.getValueAt(i,3).toString());
             total += subtotal;
 
-            comprovante.append(
-                    nome
-                            + " x"
-                            + qtd
-                            + " - "
-                            + df.format(subtotal)
-                            + "\n"
-            );
+            comprovante.append(nome + " x" + qtd + " - " + df.format(subtotal) + "\n");
         }
 
-        comprovante.append(
-                "\nPagamento: "
-                        + pagamento
-        );
+        comprovante.append("\nPagamento: " + pagamento);
+        comprovante.append("\nTotal: " + df.format(total));
 
-        comprovante.append(
-                "\nTotal: "
-                        + df.format(total)
-        );
-
-        JOptionPane.showMessageDialog(
-                this,
-                comprovante.toString(),
-                "Venda Finalizada",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        JOptionPane.showMessageDialog(this, comprovante.toString(),"Venda Finalizada",JOptionPane.INFORMATION_MESSAGE);
 
         modeloCarrinho.setRowCount(0);
 
         atualizarTotal();
     }
 
-    // ======================================
-    // ATUALIZAR TOTAL
-    // ======================================
+    // Atualizar total
     private void atualizarTotal() {
-
         double total = 0;
-
-        for(int i = 0;
-            i < modeloCarrinho.getRowCount();
-            i++) {
-
-            total += Double.parseDouble(
-
-                    modeloCarrinho
-                            .getValueAt(i,3)
-                            .toString()
-            );
+        for(int i = 0;i < modeloCarrinho.getRowCount();i++) {
+            total += Double.parseDouble(modeloCarrinho.getValueAt(i,3).toString());
         }
-
-        lblTotal.setText(
-                "Total: "
-                        + df.format(total)
-        );
+        lblTotal.setText("Total: " + df.format(total));
     }
 
-    // ======================================
-    // ESTILO BOTÃO
-    // ======================================
-    private void estilizarBotao(
-            JButton botao
-    ) {
-
+    // Estilo do botão
+    private void estilizarBotao(JButton botao) {
         botao.setBackground(roxoPastel);
-
         botao.setForeground(Color.WHITE);
-
         botao.setFocusPainted(false);
-
-        botao.setFont(
-                new Font(
-                        "Arial",
-                        Font.BOLD,
-                        14
-                )
-        );
+        botao.setFont(new Font("Arial", Font.BOLD,14));
     }
 }

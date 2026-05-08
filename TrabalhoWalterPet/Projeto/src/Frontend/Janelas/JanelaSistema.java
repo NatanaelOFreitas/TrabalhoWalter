@@ -1,5 +1,6 @@
 package Frontend.Janelas;
 
+import Frontend.JanelasAuxiliares.JanelaEstoque;
 import Frontend.JanelasAuxiliares.JanelaProdutos;
 import Frontend.JanelasAuxiliares.JanelaVendas;
 
@@ -174,11 +175,7 @@ public class JanelaSistema extends JFrame {
         cardReposicao.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Abrir tela de estoque!"
-                );
+                new JanelaEstoque().setVisible(true);
             }
         });
 
@@ -194,7 +191,6 @@ public class JanelaSistema extends JFrame {
         listaEstoque.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
                 new JanelaProdutos().setVisible(true);
             }
         });
