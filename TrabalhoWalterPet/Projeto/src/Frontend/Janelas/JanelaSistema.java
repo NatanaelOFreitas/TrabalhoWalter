@@ -13,41 +13,36 @@ import java.awt.event.MouseEvent;
 
 public class JanelaSistema extends JFrame {
 
-    // ===== CORES =====
+    // Cores
     private final Color fundo = new Color(245, 240, 255);
     private final Color roxoPastel = new Color(170, 140, 220);
     private final Color branco = Color.WHITE;
+
     private JFrame janelaAtual;
 
-
     public JanelaSistema() {
-
-        // ===== JANELA =====
         setTitle("Dashboard - PetShop Miaujuda");
         setSize(1000, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // ===== PAINEL PRINCIPAL =====
+        // Painel Principal
         JPanel painelPrincipal = new JPanel();
         painelPrincipal.setLayout(new BorderLayout(15, 15));
         painelPrincipal.setBackground(fundo);
-        painelPrincipal.setBorder(
-                BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        painelPrincipal.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        // ===== TOPO =====
+        // Topo
         JPanel painelTopo = new JPanel(new BorderLayout());
         painelTopo.setBackground(fundo);
 
-        JLabel lblTitulo =
-                new JLabel("Bem-vindo ao PetShop Miaujuda");
-
+        JLabel lblTitulo = new JLabel("Bem-vindo ao PetShop Miaujuda");
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 28));
         lblTitulo.setForeground(roxoPastel);
 
         painelTopo.add(lblTitulo, BorderLayout.WEST);
 
-        // ===== CARDS =====
+        // Cards
         JPanel painelCards = new JPanel(new GridLayout(2, 2, 15, 15));
         painelCards.setBackground(fundo);
 
@@ -86,28 +81,21 @@ public class JanelaSistema extends JFrame {
         painelCards.add(cardReposicao);
         painelCards.add(cardUltimaVenda);
 
-        // ===== LISTAS =====
-        JPanel painelListas = new JPanel(new GridLayout(1, 2, 15, 15));
-        painelListas.setBackground(fundo);
-
-        // ===== ADICIONANDO =====
+        // Adicionando
         painelPrincipal.add(painelTopo, BorderLayout.NORTH);
         painelPrincipal.add(painelCards, BorderLayout.CENTER);
-        painelPrincipal.add(painelListas, BorderLayout.SOUTH);
 
         add(painelPrincipal);
 
-        // ===== CLIQUES DOS CARDS =====
+        // Evento dos cards
 
         // Produtos
         cardEstoque.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
                 fecharJanelaAtual();
                 janelaAtual = new JanelaProdutos();
                 janelaAtual.setVisible(true);
-
             }
         });
 
@@ -115,7 +103,6 @@ public class JanelaSistema extends JFrame {
         cardReposicao.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
                 fecharJanelaAtual();
                 janelaAtual = new JanelaEstoque();
                 janelaAtual.setVisible(true);
@@ -126,62 +113,35 @@ public class JanelaSistema extends JFrame {
         cardVendas.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
                 fecharJanelaAtual();
                 janelaAtual = new JanelaVendas();
                 janelaAtual.setVisible(true);
             }
         });
-
     }
 
     void fecharJanelaAtual() {
-
         if (janelaAtual != null) {
             janelaAtual.dispose();
         }
     }
 
-    // ===== MÉTODO CARD =====
-    private JPanel criarCard(
-            String titulo,
-            String valor,
-            String descricao
-    ) {
-
+    // Criando os cards
+    private JPanel criarCard(String titulo, String valor, String descricao) {
         JPanel card = new JPanel();
-
         card.setLayout(new GridLayout(3, 1));
         card.setBackground(branco);
-
-        card.setBorder(
-                BorderFactory.createCompoundBorder(
-                        BorderFactory.createLineBorder(
-                                roxoPastel,
-                                2
-                        ),
-                        BorderFactory.createEmptyBorder(
-                                15,
-                                15,
-                                15,
-                                15
-                        )
-                )
-        );
-
+        card.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(roxoPastel,2),
+                                            BorderFactory.createEmptyBorder(15,15,15,15)));
         JLabel lblTitulo = new JLabel(titulo);
-        lblTitulo.setFont(
-                new Font("Arial", Font.BOLD, 18));
-
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 24));
         lblTitulo.setForeground(roxoPastel);
 
         JLabel lblValor = new JLabel(valor);
-        lblValor.setFont(
-                new Font("Arial", Font.BOLD, 24));
+        lblValor.setFont(new Font("Arial", Font.BOLD, 24));
 
         JLabel lblDescricao = new JLabel(descricao);
-        lblDescricao.setFont(
-                new Font("Arial", Font.PLAIN, 14));
+        lblDescricao.setFont(new Font("Arial", Font.PLAIN, 14));
 
         card.add(lblTitulo);
         card.add(lblValor);
@@ -189,23 +149,15 @@ public class JanelaSistema extends JFrame {
 
         // Efeito hover
         card.addMouseListener(new MouseAdapter() {
-
             @Override
             public void mouseEntered(MouseEvent e) {
-
-                card.setBackground(
-                        new Color(235, 225, 255));
+                card.setBackground(new Color(235, 225, 255));
             }
-
             @Override
             public void mouseExited(MouseEvent e) {
-
                 card.setBackground(branco);
             }
         });
-
-
-
         return card;
     }
 }

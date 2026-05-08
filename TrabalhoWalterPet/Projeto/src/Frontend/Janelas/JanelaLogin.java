@@ -72,7 +72,7 @@ public class JanelaLogin extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String senha = new String(txtSenha.getPassword());
-                if (senha.equals("1234")) {
+                if (senha.equals("1234")) {  //Senha de login: 1234
                     dispose();
                     JanelaSistema Sistema = new JanelaSistema();
                     Sistema.setVisible(true);
@@ -82,7 +82,6 @@ public class JanelaLogin extends JFrame {
                 }
             }
         });
-
         painelBaixo.add(btnEntrar);
         painelBaixo.add(lblMensagem);
 

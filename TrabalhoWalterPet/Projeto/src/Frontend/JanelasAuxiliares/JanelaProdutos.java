@@ -34,7 +34,9 @@ public class JanelaProdutos extends JFrame {
         painelBusca.setBackground(fundo);
         txtBusca = new JTextField(20);
         JButton btnPesquisar = new JButton("Pesquisar");
+
         estilizarBotao(btnPesquisar);
+
         painelBusca.add(new JLabel("Buscar Produto:"));
         painelBusca.add(txtBusca);
         painelBusca.add(btnPesquisar);
