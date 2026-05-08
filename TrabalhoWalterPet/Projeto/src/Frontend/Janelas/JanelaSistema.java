@@ -55,28 +55,30 @@ public class JanelaSistema extends JFrame {
                 criarCard(
                         "Sistema Vendas",
                         "",
-                        ""
+                        "3 -Acoplar o Estoque real aos produtos disponíveis para vender" +
+                                "" +
+                                "Não permitir vender uma quantidade maior do que há livre no estoque"
                 );
 
         JPanel cardEstoque =
                 criarCard(
                         "Gerenciamento de Produtos",
                         "",
-                        ""
+                        "1- Tornar a criação de produtos em algo permanente em quanto o programa não for totalmente encerrado "
                 );
 
         JPanel cardReposicao =
                 criarCard(
                         "Gerenciamento de Estoque",
                         "",
-                        ""
+                        "2- Tornar a mudança dos produtos no estoque em algo permanente em quanto o código estiver aberto"
                 );
 
         JPanel cardUltimaVenda =
                 criarCard(
                         "Última Venda",
                         "R$ 89,90",
-                        " (criar um jeito de falar qual foi o produto vendido) "
+                        " (criar um jeito de falar qual foi o valor da última venda realizada) "
                 );
 
         painelCards.add(cardVendas);
