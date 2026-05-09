@@ -14,11 +14,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>5.9</version>
-        </dependency>
         <!-- FlatLaf - Tema moderno Dark -->
         <dependency>
             <groupId>com.formdev</groupId>
@@ -26,14 +21,7 @@
             <version>3.2</version>
         </dependency>
 
-<!--        &lt;!&ndash; Ícones Awesome Font &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.formdev</groupId>-->
-<!--            <artifactId>awesome-font</artifactId>-->
-<!--            <version>1.0.3</version>-->
-<!--        </dependency>-->
-
-        <!-- Componentes extras do FlatLaf -->
+        <!-- FrontEnd.Frontend.Componentes extras do FlatLaf -->
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf-extras</artifactId>

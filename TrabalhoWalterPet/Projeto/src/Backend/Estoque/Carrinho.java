@@ -6,102 +6,151 @@ import java.util.List;
 public class Carrinho {
 
 
-    //atributes
+    // atributos
 
-    private int id;
     private List<Produto> carrinho;
     private float totalCarrinho;
 
 
-    //Constructor
+    // construtor
 
-    public Carrinho(int id){
-        this.id = id;
+    public Carrinho() {
         this.totalCarrinho = 0.0f;
         this.carrinho = new ArrayList<>();
     }
 
 
-    //setters
+    // setters
 
-    public void setTotalCarrinho(float novoTotal){
+    public void setTotalCarrinho(float novoTotal) {
         this.totalCarrinho = novoTotal;
     }
 
 
-    //getters
+    // getters
 
-    public Produto getProduto(int pos){
-        if(validPos(pos)){
+    public Produto getProduto(int pos) {
+
+        if (validPos(pos)) {
             return carrinho.get(pos);
         }
-        else{
-            return null;
-        }
+
+        return null;
     }
 
-    public void listarCarrinho(){
-        for (int i = 0; i < carrinho.size(); i++){
-            if (getProduto(i).getDescricao().isBlank()){
-                System.out.printf("[%d] - %s - %.2f - %d uni(s);",
-                        i+1,
-                        getProduto(i).getNome(),
-                        getProduto(i).getPrecoUni(),
-                        getProduto(i).getQuantd());
-            }
-            else{
-                System.out.printf("[%d] - %s - %.2f - %d uni(s) - %s;",
-                        i+1,
-                        getProduto(i).getNome(),
-                        getProduto(i).getPrecoUni(),
-                        getProduto(i).getQuantd(),
-                        getProduto(i).getDescricao());
-            }
-        }
+    public List<Produto> getCarrinho() {
+        return carrinho;
     }
 
-    public float getTotal(){
+    public float getTotal() {
         return totalCarrinho;
     }
 
-    public int getId(){
-        return id;
+    public int tamanho() {
+        return carrinho.size();
     }
 
 
-    //methods
+    // métodos
 
-    public void adicionarProd(Produto p){
-        if(posInCarrinho(p) != -1){
-            int total = carrinho.get(posInCarrinho(p)).getQuantd() + p.getQuantd();
+    public List<String> listarCarrinho() {
+
+        List<String> lista = new ArrayList<>();
+
+        for (Produto p : carrinho) {
+            lista.add(p.infoProduto());
+        }
+
+        return lista;
+    }
+
+    public void adicionarProd(Produto p) {
+
+        int pos = posInCarrinho(p);
+
+        if (pos != -1) {
+
+            int total = carrinho.get(pos).getQuantd() + p.getQuantd();
+
             adicionarTotal(p);
-            carrinho.get(posInCarrinho(p)).setQuantd(total);
+
+            carrinho.get(pos).setQuantd(total);
         }
-        else{
+        else {
             carrinho.add(p);
+            adicionarTotal(p);
         }
     }
 
-    public int posInCarrinho(Produto p){
-        for(int i = 0; i<carrinho.size(); i++){
-            if (p.getNome().equals(carrinho.get(i).getNome())){
+    public int posInCarrinho(Produto p) {
+
+        for (int i = 0; i < carrinho.size(); i++) {
+
+            if (p.getNome().equalsIgnoreCase(carrinho.get(i).getNome())) {
                 return i;
             }
         }
+
         return -1;
     }
 
-    public void adicionarTotal(Produto p){
+    public void adicionarTotal(Produto p) {
+
         float adicionar = p.getQuantd() * p.getPrecoUni();
+
         setTotalCarrinho(getTotal() + adicionar);
     }
 
-    public boolean validPos(int pos){
-        return pos < carrinho.size() && pos >=0;
+    public boolean validPos(int pos) {
+        return pos < carrinho.size() && pos >= 0;
     }
 
-    public void pagar(){
+    public void pagar() {
         this.totalCarrinho = 0.0f;
         carrinho.clear();
+    }
+
+    public void removerProduto(String nome) {
+
+        for (int i = 0; i < carrinho.size(); i++) {
+
+            Produto p = carrinho.get(i);
+
+            if (p.getNome().equalsIgnoreCase(nome)) {
+
+                float remover = p.getQuantd() * p.getPrecoUni();
+
+                totalCarrinho -= remover;
+
+                carrinho.remove(i);
+
+                return;
+            }
+        }
+
+        throw new IllegalArgumentException("Produto não encontrado no carrinho");
+    }
+
+    public void alterarQuantidade(String nome, int novaQtd) {
+
+        if (novaQtd <= 0) {
+            throw new IllegalArgumentException("Quantidade inválida");
+        }
+
+        for (Produto p : carrinho) {
+
+            if (p.getNome().equalsIgnoreCase(nome)) {
+
+                totalCarrinho -= p.getQuantd() * p.getPrecoUni();
+
+                p.setQuantd(novaQtd);
+
+                totalCarrinho += p.getQuantd() * p.getPrecoUni();
+
+                return;
+            }
+        }
+
+        throw new IllegalArgumentException("Produto não encontrado no carrinho");
     }
 }

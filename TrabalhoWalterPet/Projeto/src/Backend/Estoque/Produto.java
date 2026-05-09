@@ -1,31 +1,31 @@
 package Backend.Estoque;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Produto {
 
 
-    //atributes
+    // atributos
 
-    private int id;
-    private int idEstoque;
     private String nome;
     private int quantd;
     private float precoUni;
     private String descricao;
 
 
-    //constructor
+    // construtores
 
-//    public Produto(String nome, float precoUni) {
-//        this(nome, 1, precoUni, "");
-//    }
-//
-//    public Produto(String nome, int quantd, float precoUni) {
-//        this(nome, quantd, precoUni, "");
-//    }
+    public Produto(String nome, float precoUni) {
+        this(nome, 1, precoUni, "");
+    }
 
-    public Produto(int id, int idEstoque, String nome, int quantd, float precoUni, String descricao) {
-        this.id = id;
-        this.idEstoque = idEstoque;
+    public Produto(String nome, int quantd, float precoUni) {
+        this(nome, quantd, precoUni, "");
+    }
+
+    public Produto(String nome, int quantd, float precoUni, String descricao) {
         this.nome = nome.toLowerCase();
         this.quantd = (quantd <= 0) ? 1 : quantd;
         this.precoUni = precoUni;
@@ -33,7 +33,7 @@ public class Produto {
     }
 
 
-    //getters
+    // getters
 
     public String getNome() {
         return nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
@@ -48,22 +48,15 @@ public class Produto {
     }
 
     public String getDescricao() {
-        if (descricao.isBlank()){
+        if (descricao.isBlank()) {
             return "";
         }
+
         return descricao.substring(0, 1).toUpperCase() + descricao.substring(1).toLowerCase();
     }
 
-    public int getId(){
-        return id;
-    }
 
-    public int getIdEstoque(){
-        return idEstoque;
-    }
-
-
-    //setters
+    // setters
 
     public void setNome(String nome) {
         this.nome = nome.toLowerCase();
@@ -73,6 +66,7 @@ public class Produto {
         if (precoUni < 0) {
             throw new IllegalArgumentException("Preço não pode ser negativo");
         }
+
         this.precoUni = precoUni;
     }
 
@@ -80,6 +74,7 @@ public class Produto {
         if (quantd < 0) {
             throw new IllegalArgumentException("Quantidade não pode ser negativa");
         }
+
         this.quantd = quantd;
     }
 
@@ -88,9 +83,35 @@ public class Produto {
     }
 
 
-    //methods
+    // métodos
+    public static List<Object[]> produtos = new ArrayList<>();
 
-    public boolean temSuficiente(int quantd){
+
+    public boolean temSuficiente(int quantd) {
         return (this.quantd - quantd) >= 0;
+    }
+
+    public boolean estoqueBaixo() {
+        return this.quantd < 5;
+    }
+
+    public String infoProduto() {
+
+        if (getDescricao().isBlank()) {
+            return String.format(
+                    "Nome: %s - Preço unitário: R$%.2f - Quantidade: %dx",
+                    getNome(),
+                    getPrecoUni(),
+                    getQuantd()
+            );
+        }
+
+        return String.format(
+                "Nome: %s - Preço unitário: R$%.2f - Quantidade: %dx - Descrição: %s",
+                getNome(),
+                getPrecoUni(),
+                getQuantd(),
+                getDescricao()
+        );
     }
 }
