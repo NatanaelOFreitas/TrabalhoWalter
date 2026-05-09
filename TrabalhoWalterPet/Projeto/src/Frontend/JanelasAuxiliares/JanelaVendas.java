@@ -1,13 +1,18 @@
 package Frontend.JanelasAuxiliares;
 
-import Frontend.Janelas.JanelaSistema;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.text.DecimalFormat;
+import Backend.Estoque.Produto;
+import Frontend.Janelas.JanelaSistema;
+
 
 public class JanelaVendas extends JFrame {
+
+    // Faturamento total
+    public static double faturamento = 0;
 
     // Tabelas
     private JTable tabelaProdutos;
@@ -84,15 +89,6 @@ public class JanelaVendas extends JFrame {
         tabelaProdutos.setRowHeight(25);
 
         JScrollPane scrollProdutos = new JScrollPane(tabelaProdutos);
-
-        // Exemplos iniciais
-        modeloProdutos.addRow(new Object[]{"Ração Golden", 120.00, 10});
-
-        modeloProdutos.addRow(new Object[]{"Shampoo Pet", 35.50, 15});
-
-        modeloProdutos.addRow(new Object[]{"Coleira Azul", 25.90, 20});
-
-        modeloProdutos.addRow(new Object[]{"Brinquedo Osso", 18.00, 8});
 
         // Ordenar e pesquisar
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modeloProdutos);
@@ -197,21 +193,75 @@ public class JanelaVendas extends JFrame {
         btnFinalizar.addActionListener(e -> {
             finalizarVenda(comboPagamento.getSelectedItem().toString());
         });
+
+        carregarProdutos();
+
+    }
+
+    private void carregarProdutos() {
+
+        modeloProdutos.setRowCount(0);
+
+        for(Object[] produto : Produto.produtos) {
+
+            String nome = produto[0].toString();
+
+            double preco =
+                    Double.parseDouble(produto[1].toString());
+
+            int quantidade =
+                    Integer.parseInt(produto[2].toString());
+
+            modeloProdutos.addRow(new Object[] {
+                    nome,
+                    preco,
+                    quantidade
+            });
+        }
     }
 
     // Adicionar no carrinho
     private void adicionarCarrinho() {
+
         int linha = tabelaProdutos.getSelectedRow();
+
         if(linha == -1) {
-            JOptionPane.showMessageDialog(this,"Selecione um produto!");
+            JOptionPane.showMessageDialog(this,
+                    "Selecione um produto!");
             return;
         }
-        String nome = tabelaProdutos.getValueAt(linha,0).toString();
-        double preco = Double.parseDouble(tabelaProdutos.getValueAt(linha,1).toString());
-        int quantidade = (Integer)spinnerQuantidade.getValue();
+
+        String nome =
+                modeloProdutos.getValueAt(linha,0).toString();
+
+        double preco =
+                Double.parseDouble(
+                        modeloProdutos.getValueAt(linha,1).toString());
+
+        int estoque =
+                Integer.parseInt(
+                        modeloProdutos.getValueAt(linha,2).toString());
+
+        int quantidade =
+                (Integer) spinnerQuantidade.getValue();
+
+        // Verifica estoque
+        if(quantidade > estoque) {
+            JOptionPane.showMessageDialog(this,
+                    "Estoque insuficiente!");
+            return;
+        }
+
+        // Calcula subtotal
         double subtotal = preco * quantidade;
 
-        modeloCarrinho.addRow(new Object[]{nome, quantidade, preco, subtotal});
+        // Adiciona no carrinho
+        modeloCarrinho.addRow(new Object[] {
+                nome,
+                quantidade,
+                preco,
+                subtotal
+        });
 
         atualizarTotal();
     }
@@ -255,10 +305,30 @@ public class JanelaVendas extends JFrame {
             total += subtotal;
 
             comprovante.append(nome + " x" + qtd + " - " + df.format(subtotal) + "\n");
+
+            for(int j = 0; j < Produto.produtos.size(); j++) {
+                String nomeProduto =
+                        Produto.produtos.get(j)[0].toString();
+
+                if(nome.equals(nomeProduto)) {
+                    int estoqueAtual = Integer.parseInt(Produto.produtos.get(j)[2].toString());
+
+                    int novoEstoque = estoqueAtual - qtd;
+
+                    Produto.produtos.get(j)[2] = String.valueOf(novoEstoque);
+
+                    modeloProdutos.setValueAt(novoEstoque, j, 2);
+                }
+            }
         }
 
         comprovante.append("\nPagamento: " + pagamento);
         comprovante.append("\nTotal: " + df.format(total));
+
+        faturamento += total;
+        dispose();
+        JanelaSistema sistema = new JanelaSistema();
+        sistema.setVisible(true);
 
         JOptionPane.showMessageDialog(this, comprovante.toString(),"Venda Finalizada",JOptionPane.INFORMATION_MESSAGE);
 
