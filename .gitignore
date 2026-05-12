@@ -5,3 +5,5 @@ out/
 /docs/
 production/
 *.rar
+target/
+leitor-csv.iml
